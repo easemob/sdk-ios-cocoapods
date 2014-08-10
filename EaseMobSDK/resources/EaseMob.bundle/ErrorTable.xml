@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<systemcode xmlns:"http://www.easemob.com/systemcode">
+    <version>1.0</version>
+    <error>
+        <code value="-1" domain="0" info="xxxx" />
+        <code <code value="-2" domain="1" info="xxxx" />
+    </error>
+    <service>
+        <code value="-100" domain="0" info="xxxx" />
+        <code value="-200" domain="1" info="xxxx" />
+        <code/>
+    </service>
+</systemcode>
