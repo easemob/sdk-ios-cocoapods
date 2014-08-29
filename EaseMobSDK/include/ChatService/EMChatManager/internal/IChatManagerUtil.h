@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "IChatManagerBase.h"
 
-@protocol IEMFileMessageBody;
 @protocol IEMChatProgressDelegate;
 @class EMError;
 @class EMMessage;

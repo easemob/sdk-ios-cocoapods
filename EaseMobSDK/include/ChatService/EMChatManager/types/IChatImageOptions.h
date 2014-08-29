@@ -1,6 +1,6 @@
 /*!
  @header IChatImageOptions.h
- @abstract
+ @abstract 发送图片消息时的压缩设置协议
  @author EaseMob Inc.
  @version 1.00 2014/01/01 Creation (1.00)
  */

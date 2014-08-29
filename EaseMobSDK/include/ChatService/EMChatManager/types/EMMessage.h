@@ -93,6 +93,12 @@
 
 /*!
  @property
+ @brief 是否是离线消息
+ */
+@property (nonatomic, readonly) BOOL isOfflineMessage;
+
+/*!
+ @property
  @brief 消息扩展
  */
 @property (nonatomic, strong) NSDictionary *ext;

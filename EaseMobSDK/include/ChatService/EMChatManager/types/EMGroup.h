@@ -108,6 +108,12 @@ typedef enum{
 @property (nonatomic, strong, readonly) EMGroupStyleSetting *groupSetting;
 
 /*!
+ @property
+ @brief  此群组是否接收推送通知
+ */
+@property (nonatomic, readonly) BOOL isPushNotificationEnabled;
+
+/*!
  @method
  @brief 创建一个群组实例
  @param groupId          群组ID

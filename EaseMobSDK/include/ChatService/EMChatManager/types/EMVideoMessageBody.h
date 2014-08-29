@@ -107,7 +107,7 @@
  @property
  @brief 缩略图是否下载完成
  */
-@property (nonatomic)EMAttachmentDownloadStatus thumbnailDownloadSatus;
+@property (nonatomic)EMAttachmentDownloadStatus thumbnailDownloadStatus;
 
 /*!
  @method

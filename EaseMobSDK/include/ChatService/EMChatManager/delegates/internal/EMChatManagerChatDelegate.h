@@ -109,4 +109,21 @@
  */
 - (void)didUnreadMessagesCountChanged;
 
+/*!
+ @method
+ @brief 将要接收离线消息的回调
+ @discussion
+ @result
+ */
+- (void)willReceiveOfflineMessages;
+
+/*!
+ @method
+ @brief 离线消息接收完成的回调
+ @discussion
+ @param offlineMessages 接收到的离线列表
+ @result
+ */
+- (void)didFinishedReceiveOfflineMessages:(NSArray *)offlineMessages;
+
 @end
