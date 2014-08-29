@@ -14,6 +14,7 @@
 #import "IChatManagerLogin.h"
 #import "IChatManagerBuddy.h"
 #import "IChatManagerGroup.h"
+#import "IChatManagerSettingOptions.h"
 #import "IChatManagerPushNotification.h"
 
 /*!
@@ -30,6 +31,7 @@
                         IChatManagerUtil,
                         IChatManagerGroup, 
                         IChatManagerBuddy,
+                        IChatManagerSettingOptions,
                         IChatManagerPushNotification>
 @required
 

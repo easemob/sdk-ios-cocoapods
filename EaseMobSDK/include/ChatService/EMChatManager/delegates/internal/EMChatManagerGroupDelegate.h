@@ -51,6 +51,19 @@
 
 /*!
  @method
+ @brief 收到了已自动加入某个群组的通知（你收到通知时已是该群成员）
+ @param groupId  群组ID
+ @param username 邀请人名称
+ @param message  邀请信息
+ @discussion
+        主要发生 1、于创建群组时，被选为默认成员；2、isAutoAcceptGroupInvitation为YES
+ */
+- (void)didAutoAcceptedGroupInvitationFrom:(NSString *)groupId
+                                   inviter:(NSString *)username
+                                   message:(NSString *)message;
+
+/*!
+ @method
  @brief 收到了其它群组的加入邀请
  @param groupId  群组ID
  @param username 邀请人名称
@@ -59,7 +72,21 @@
  */
 - (void)didReceiveGroupInvitationFrom:(NSString *)groupId
                               inviter:(NSString *)username
-                              message:(NSString *)message;
+                              message:(NSString *)message EM_DEPRECATED_IOS(2_0_0, 2_0_6, "Use -didReceiveGroupInvitationFrom:inviter:message:error:");
+
+/*!
+ @method
+ @brief 收到了其它群组的加入邀请 + 发送邀人申请失败
+ @param groupId  群组ID
+ @param username 邀请人名称
+ @param message  邀请信息
+ @param error    错误信息
+ @discussion
+ */
+- (void)didReceiveGroupInvitationFrom:(NSString *)groupId
+                              inviter:(NSString *)username
+                              message:(NSString *)message
+                                error:(EMError *)error;
 
 /*!
  @method
@@ -76,23 +103,55 @@
  @param groupId  群组ID
  @param username 拒绝的人的用户名
  @param reason   拒绝理由
+ @discussion
  */
 - (void)didReceiveGroupRejectFrom:(NSString *)groupId
                           invitee:(NSString *)username
-                           reason:(NSString *)reason;
+                           reason:(NSString *)reason EM_DEPRECATED_IOS(2_0_0, 2_0_6, "Use -didReceiveGroupRejectFrom:invitee:reason:error:");
+
+/*!
+ @method
+ @brief 邀请别人加入群组, 但被别人拒绝后的回调 + 拒绝群组邀请发生错误
+ @param groupId  群组ID
+ @param username 拒绝的人的用户名
+ @param reason   拒绝理由
+ @param error    错误信息
+ @discussion
+ */
+- (void)didReceiveGroupRejectFrom:(NSString *)groupId
+                          invitee:(NSString *)username
+                           reason:(NSString *)reason
+                            error:(EMError *)error;
 
 /*!
  @method
  @brief 收到加入群组的申请
  @param groupId         要加入的群组ID
- @param groupname   申请人的用户名
- @param username   申请人的昵称
+ @param groupname       申请人的用户名
+ @param username        申请人的昵称
  @param reason          申请理由
+ @discussion
  */
 - (void)didReceiveApplyToJoinGroup:(NSString *)groupId
                          groupname:(NSString *)groupname
                      applyUsername:(NSString *)username
-                            reason:(NSString *)reason;
+                            reason:(NSString *)reason EM_DEPRECATED_IOS(2_0_0, 2_0_6, "Use -didReceiveApplyToJoinGroup:groupname:applyUsername:reason:error:");
+
+/*!
+ @method
+ @brief 收到加入群组的申请 + 申请入群发生错误
+ @param groupId         要加入的群组ID
+ @param groupname       申请人的用户名
+ @param username        申请人的昵称
+ @param reason          申请理由
+ @param error           错误信息
+ @discussion
+ */
+- (void)didReceiveApplyToJoinGroup:(NSString *)groupId
+                         groupname:(NSString *)groupname
+                     applyUsername:(NSString *)username
+                            reason:(NSString *)reason
+                             error:(EMError *)error;
 
 /*!
  @method
@@ -103,7 +162,20 @@
  */
 - (void)didReceiveRejectApplyToJoinGroupFrom:(NSString *)fromId
                                    groupname:(NSString *)groupname
-                                      reason:(NSString *)reason;
+                                      reason:(NSString *)reason EM_DEPRECATED_IOS(2_0_0, 2_0_6, "Use -didReceiveRejectApplyToJoinGroupFrom:groupname:reason:error:");
+
+/*!
+ @method
+ @brief 申请加入群组，被拒绝后的回调 + 群主拒绝入群申请发生错误
+ @param fromId          拒绝的人的ID
+ @param groupname       申请加入的群组名称
+ @param reason          拒绝理由
+ @param error           错误信息
+ */
+- (void)didReceiveRejectApplyToJoinGroupFrom:(NSString *)fromId
+                                   groupname:(NSString *)groupname
+                                      reason:(NSString *)reason
+                                       error:(EMError *)error;
 
 /*!
  @method
@@ -112,7 +184,18 @@
  @param groupname       申请加入的群组名称
  */
 - (void)didReceiveAcceptApplyToJoinGroup:(NSString *)groupId
-                               groupname:(NSString *)groupname;
+                               groupname:(NSString *)groupname EM_DEPRECATED_IOS(2_0_0, 2_0_6, "Use -didReceiveAcceptApplyToJoinGroup:groupname:error:");
+
+/*!
+ @method
+ @brief 用户申请加入群组，群主同意后，用户收到回调 + 用户申请入群，群主同意申请发生错误
+ @param groupId         申请加入的群组的ID
+ @param groupname       申请加入的群组名称
+ @param error           错误信息
+ */
+- (void)didReceiveAcceptApplyToJoinGroup:(NSString *)groupId
+                               groupname:(NSString *)groupname
+                                   error:(EMError *)error;
 
 /*!
  @method
@@ -140,6 +223,15 @@
  */
 - (void)didFetchGroupInfo:(EMGroup *)group
                     error:(EMError *)error;
+
+/*!
+ @method
+ @brief 获取群组成员列表后的回调
+ @param occupantsList 群组成员列表（包含创建者）
+ @param error         错误信息
+ */
+- (void)didFetchGroupOccupantsList:(NSArray *)occupantsList
+                             error:(EMError *)error;
 
 /*!
  @method

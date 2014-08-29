@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CGGeometry.h>
 #import "IEMChatFile.h"
+#import "IChatImageOptions.h"
 
 @class UIImage;
 @protocol IEMMessageBody;
@@ -50,6 +51,13 @@
  当消息体通过聊天对象创建完成后, messageBody为非nil, 当聊天对象并不属于任何消息体对象的时候, messageBody为nil
  */
 @property (nonatomic, weak) id<IEMMessageBody> messageBody;
+
+/*!
+ @property
+ @brief 对上传的图片压缩设置
+ @discussion 目前只支持对图片的压缩比率的设置
+ */
+@property (strong, nonatomic) id <IChatImageOptions> imageOptions;
 
 /*!
  @method

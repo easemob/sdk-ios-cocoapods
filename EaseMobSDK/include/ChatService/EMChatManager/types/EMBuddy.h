@@ -44,12 +44,6 @@ typedef enum : NSInteger {
 
 /*!
  @property
- @brief 好友是否在线
- */
-@property (nonatomic) BOOL isOnline;
-
-/*!
- @property
  @brief 好友状态
  */
 @property (nonatomic) EMBuddyFollowState followState;

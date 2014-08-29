@@ -148,8 +148,21 @@
  @brief 保存聊天消息
  @param message 待保存的聊天消息
  @return 是否成功保存聊天消息
+ @discussion 
+        消息会直接保存到数据库中,并不会加载到聊天中(并没有加载进内存里);
+        若希望加载到聊天中(内存中),请使用importMessage:append2Chat:
  */
 - (BOOL)saveMessage:(EMMessage *)message;
+
+/*!
+ @method
+ @brief 导入聊天消息
+ @param message 待导入的聊天消息
+ @param append2Chat 是否加载到聊天中
+ @return 是否成功导入聊天消息
+ */
+- (BOOL)importMessage:(EMMessage *)message
+          append2Chat:(BOOL)append2Chat;
 
 /*!
  @method

@@ -182,8 +182,11 @@ typedef enum{
  获取黑名单成功 判断条件：completion中，error == nil
  函数执行完, 会调用参数completion
  */
+- (void)asyncFetchBlockedListWithCompletion:(void (^)(NSArray *blockedList, EMError *error))completion
+                                    onQueue:(dispatch_queue_t)aQueue;
+
 - (void)asyncFetchBlockListWithCompletion:(void (^)(NSArray *blockedList, EMError *error))completion
-                                  onQueue:(dispatch_queue_t)aQueue;
+                                    onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_6, 2_0_7, "Use -asyncFetchBlockedListWithCompletion:onQueue:");
 
 /*!
  @method

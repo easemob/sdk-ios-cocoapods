@@ -37,7 +37,7 @@
  @brief  创建群组（同步方法）
  @param subject        群组名称
  @param description    群组描述
- @param invitees       默认群组成员（usernames）
+ @param invitees       默认群组成员（usernames，不需要包含创建者username）
  @param welcomeMessage 群组欢迎语
  @param styleSetting   群组属性配置
  @param pError          建组的错误。成功为nil
@@ -57,7 +57,7 @@
  @brief  创建群组（异步方法）。
  @param subject        群组名称
  @param description    群组描述
- @param invitees       默认群组成员（usernames）
+ @param invitees       默认群组成员（usernames，不需要包含创建者username）
  @param welcomeMessage 群组欢迎语
  @param styleSetting   群组属性配置
  @discussion
@@ -74,7 +74,7 @@
  @brief  创建群组（异步方法）。
  @param subject        群组名称
  @param description    群组描述
- @param invitees       默认群组成员（usernames）
+ @param invitees       默认群组成员（usernames，不需要包含创建者username）
  @param welcomeMessage 群组欢迎语
  @param styleSetting   群组属性配置
  @param completion     创建完成后的回调
@@ -696,7 +696,7 @@
 
 /*!
  @method
- @brief 获取群组信息
+ @brief 获取群组详细信息（id，密码，主题，描述，实际总人数，在线人数，成员列表，属性）
  @param groupId 群组ID
  @param pError  错误信息
  @result 所获取的群组对象
@@ -706,7 +706,7 @@
 
 /*!
  @method
- @brief 异步方法, 获取群组信息
+ @brief 异步方法, 获取群组详细信息（id，密码，主题，描述，实际总人数，在线人数，成员列表，属性）
  @param groupId 群组ID
  @discussion
         执行后, 回调didFetchGroupInfo:error会被触发
@@ -715,7 +715,7 @@
 
 /*!
  @method
- @brief 异步方法, 获取群组信息
+ @brief 异步方法, 获取群组详细信息（id，密码，主题，描述，实际总人数，在线人数，成员列表，属性）
  @param groupId    群组ID
  @param completion 消息完成后的回调
  @param aQueue     回调block时的线程
@@ -723,6 +723,68 @@
 - (void)asyncFetchGroupInfo:(NSString *)groupId
                  completion:(void (^)(EMGroup *group,
                                       EMError *error))completion
+                    onQueue:(dispatch_queue_t)aQueue;
+
+/*!
+ @method
+ @brief 同步方法, 获取群组成员列表
+ @param groupId    群组ID
+ @param pError     错误信息
+ @return  群组的成员列表（包含创建者）
+ */
+- (NSArray *)fetchOccupantList:(NSString *)groupId error:(EMError **)pError;
+
+/*!
+ @method
+ @brief 异步方法, 获取群组成员列表
+ @param groupId    群组ID
+ @discussion
+ 执行完成后，回调[didFetchGroupOccupantsList:error:]
+ */
+- (void)asyncFetchOccupantList:(NSString *)groupId;
+
+/*!
+ @method
+ @brief 异步方法, 获取群组成员列表
+ @param groupId    群组ID
+ @param completion 消息完成后的回调
+ @param aQueue     回调block时的线程
+ */
+- (void)asyncFetchOccupantList:(NSString *)groupId
+                    completion:(void (^)(NSArray *occupantsList,EMError *error))completion
+                       onQueue:(dispatch_queue_t)aQueue;
+
+/*!
+ @method
+ @brief 同步方法, 获取群组信息
+ @param groupId             群组ID
+ @param includesOccupantList 是否获取成员列表
+ @param pError              错误信息
+ @return 群组
+ */
+- (EMGroup *)fetchGroupInfo:(NSString *)groupId includesOccupantList:(BOOL)includesOccupantList error:(EMError **)pError;
+
+/*!
+ @method
+ @brief 异步方法, 获取群组成员列表
+ @param groupId             群组ID
+ @param includesOccupantList 是否获取成员列表
+ @discussion
+ 执行完成后，回调[didFetchGroupInfo:error:]
+ */
+- (void)asyncFetchGroupInfo:(NSString *)groupId includesOccupantList:(BOOL)includesOccupantList;
+
+/*!
+ @method
+ @brief 异步方法, 获取群组成员列表
+ @param groupId             群组ID
+ @param includesOccupantList 是否获取成员列表
+ @param completion          消息完成后的回调
+ @param aQueue              回调block时的线程
+ */
+- (void)asyncFetchGroupInfo:(NSString *)groupId
+        includesOccupantList:(BOOL)includesOccupantList
+                 completion:(void (^)(EMGroup *group,EMError *error))completion
                     onQueue:(dispatch_queue_t)aQueue;
 
 #pragma mark - fetch my groups, Founded in 2.0.3 version
@@ -820,6 +882,8 @@
  @param groupId 公开群组的ID
  @param pError  错误信息
  @result 所加入的公开群组
+ @discussion
+        成功标志：*pError == nil;
  */
 - (EMGroup *)joinPublicGroup:(NSString *)groupId error:(EMError **)pError;
 
@@ -829,6 +893,7 @@
  @param groupId 公开群组的ID
  @discussion
         执行后, 回调didJoinPublicGroup:error:会被触发
+        成功标志：error == nil;
  */
 - (void)asyncJoinPublicGroup:(NSString *)groupId;
 
@@ -838,6 +903,8 @@
  @param groupId    公开群组的ID
  @param completion 消息完成后的回调
  @param aQueue     回调block时的线程
+ @discussion
+        成功标志：error == nil;
  */
 - (void)asyncJoinPublicGroup:(NSString *)groupId
                   completion:(void (^)(EMGroup *group,

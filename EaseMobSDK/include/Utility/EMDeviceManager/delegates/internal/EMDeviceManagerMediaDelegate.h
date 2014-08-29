@@ -18,6 +18,7 @@
 @protocol EMDeviceManagerMediaDelegate <EMDeviceManagerDelegateBase>
 
 @optional
+
 /*!
  @method
  @brief 使用 asyncPlayVibration | asyncPlayNewMessageSound 方法完成时的回调

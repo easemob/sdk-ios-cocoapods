@@ -45,7 +45,7 @@ typedef enum{
 
 /*!
  @property
- @brief 群组的最大成员数
+ @brief 群组的最大成员数(3 - 2000，ios默认是200)
  */
 @property (nonatomic) NSInteger groupMaxUsersCount;
 

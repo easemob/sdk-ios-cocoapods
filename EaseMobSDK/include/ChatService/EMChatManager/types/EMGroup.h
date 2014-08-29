@@ -9,6 +9,14 @@
 
 #import "EMGroupStyleSetting.h"
 
+typedef enum{
+    eGroupOccupantListNone     = 0,    //全部成员（不包含黑名单）
+    eGroupOccupantListOwner,           //所有者
+    eGroupOccupantListAdmin,           //管理者
+    eGroupOccupantListMember,          //成员
+    eGroupOccupantListBan,             //黑名单
+}EMGroupOccupantListType;
+
 @class EMError;
 
 /*!
@@ -34,6 +42,18 @@
  @brief 群组的描述
  */
 @property (nonatomic, strong, readonly) NSString *groupDescription;
+
+/*!
+ @property
+ @brief 群组的实际总人数
+ */
+@property (nonatomic, readonly) NSInteger groupOccupantsCount;
+
+/*!
+ @property
+ @brief 群组的在线人数
+ */
+@property (nonatomic, readonly) NSInteger groupOnlineOccupantsCount;
 
 /*!
  @property
@@ -94,5 +114,7 @@
  @result 返回新创建的群组
  */
 - (id)initWithGroupId:(NSString *)groupId;
+
+- (NSArray *)occupantsForListType:(EMGroupOccupantListType)listType;
 
 @end
