@@ -8,7 +8,7 @@ sdk-ios-cocoapods
 1. podfile 文件添加如下代码
 
 		platform :ios, '6.0'
-		pod 'EaseMobSDK'
+		pod 'EaseMobSDK', '2.0.8'
 		
 2. 使用时, 需要引入头文件, 在 pch 预编译文件中, 引入头文件如下:
 
