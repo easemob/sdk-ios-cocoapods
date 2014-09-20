@@ -117,7 +117,7 @@
  @discussion
  @result 当前登录用户所有包含未读消息的会话对象的个数
  */
-- (NSUInteger)unreadConversationsCount;
+- (NSUInteger)unreadConversationsCount EM_DEPRECATED_IOS(2_0_0, 2_0_8, "不再提供该属性");
 
 #pragma mark - search message
 

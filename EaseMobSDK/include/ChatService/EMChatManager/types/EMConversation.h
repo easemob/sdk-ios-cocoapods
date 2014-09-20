@@ -17,7 +17,7 @@
 
 /*!
  @property
- @brief 会话对方的用户名. 如果是群聊, 则是群聊的组名
+ @brief 会话对方的用户名. 如果是群聊, 则是群组的id
  */
 @property (nonatomic, strong, readonly) NSString *chatter;
 

@@ -32,4 +32,18 @@
  */
 @property (nonatomic) BOOL isAutoLoginEnabled;
 
+/*!
+ @property
+ @brief 开启消息送达通知(默认是不开启的)
+ @discussion
+ */
+- (void)enableDeliveryNotification;
+
+/*!
+ @property
+ @brief 关闭消息送达通知 (默认是不开启的)
+ @discussion
+ */
+- (void)disableDeliveryNotification;
+
 @end

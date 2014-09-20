@@ -984,4 +984,56 @@
                                                     EMError *error))completion
                                   onQueue:(dispatch_queue_t)aQueue;
 
+#pragma mark - block group
+
+/*!
+ @method
+ @brief 屏蔽群消息，服务器不发送消息(不能屏蔽自己创建的群，EMErrorInvalidUsername)
+ @param groupId   要屏蔽的群ID
+ @param pError    错误信息
+ @result 返回群组对象
+ @discussion
+ 被屏蔽的群，服务器不再发消息
+ */
+- (EMGroup *)blockGroup:(NSString *)groupId
+                  error:(EMError **)pError;
+
+/*!
+ @method
+ @brief 异步方法, 屏蔽群消息，服务器不发送消息(不能屏蔽自己创建的群，EMErrorInvalidUsername)
+ @param groupId     要取消屏蔽的群ID
+ @param completion  消息完成后的回调
+ @param aQueue      回调block时的线程
+ @discussion
+ 被屏蔽的群，服务器不再发消息
+ */
+- (void)asyncBlockGroup:(NSString *)groupId
+             completion:(void (^)(EMGroup *group,
+                                  EMError *error))completion
+                onQueue:(dispatch_queue_t)aQueue;
+
+/*!
+ @method
+ @brief 取消屏蔽群消息(不能操作自己创建的群，EMErrorInvalidUsername)
+ @param groupId   要取消屏蔽的群ID
+ @param pError    错误信息
+ @result 返回群组对象
+ @discussion
+ */
+- (EMGroup *)unblockGroup:(NSString *)groupId
+                    error:(EMError **)pError;
+
+/*!
+ @method
+ @brief 异步方法, 取消屏蔽群消息(不能操作自己创建的群，EMErrorInvalidUsername)
+ @param groupId     要取消屏蔽的群ID
+ @param completion  消息完成后的回调
+ @param aQueue      回调block时的线程
+ @discussion
+ */
+- (void)asyncUnblockGroup:(NSString *)groupId
+               completion:(void (^)(EMGroup *group,
+                                    EMError *error))completion
+                  onQueue:(dispatch_queue_t)aQueue;
+
 @end

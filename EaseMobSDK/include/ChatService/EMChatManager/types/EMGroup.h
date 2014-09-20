@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #import "EMGroupStyleSetting.h"
+#import "EMChatServiceDefs.h"
 
 typedef enum{
     eGroupOccupantListNone     = 0,    //全部成员（不包含黑名单）
@@ -85,9 +86,9 @@ typedef enum{
 
 /*!
  @property
- @brief 此群组中的所有成员列表
+ @brief 此群组中的所有成员列表(owners, members, bans)
  */
-@property (nonatomic, strong, readonly) NSArray  *occupants;
+@property (nonatomic, strong, readonly) NSArray  *occupants EM_DEPRECATED_IOS(2_0_0, 2_0_8, "不再提供该属性");
 
 /*!
  @property
@@ -114,13 +115,17 @@ typedef enum{
 @property (nonatomic, readonly) BOOL isPushNotificationEnabled;
 
 /*!
+ @property
+ @brief  此群组是否被屏蔽
+ */
+@property (nonatomic, readonly) BOOL isBlocked;
+
+/*!
  @method
  @brief 创建一个群组实例
  @param groupId          群组ID
  @result 返回新创建的群组
  */
 - (id)initWithGroupId:(NSString *)groupId;
-
-- (NSArray *)occupantsForListType:(EMGroupOccupantListType)listType;
 
 @end

@@ -42,7 +42,7 @@
 
 /*!
  @method
- @brief 异步方法, 使用用户名密码登录聊天服务器
+ @brief 异步方法, 在聊天服务器上创建账号
  @discussion
  @param username 用户名
  @param password 密码

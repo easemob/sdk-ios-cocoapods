@@ -94,6 +94,15 @@
 
 /*!
  @method
+ @brief 收到"已送达回执"时的回调方法
+ @discussion 发送方收到接收方发送的一个收到消息的回执, 但不意味着接收方已阅读了该消息
+ @param resp 收到的"已送达回执"对象, 包括 from, to, chatId等
+ @result
+ */
+- (void)didReceiveHasDeliveredResponse:(EMReceiptResp *)resp;
+
+/*!
+ @method
  @brief 会话列表信息更新时的回调
  @discussion 1. 当会话列表有更改时(新添加,删除), 2. 登陆成功时, 以上两种情况都会触发此回调
  @param conversationList 会话列表

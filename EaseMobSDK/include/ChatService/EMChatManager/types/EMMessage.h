@@ -69,6 +69,14 @@
 
 /*!
  @property
+ @brief 对于发送方来说, 该值表示:接收方是否已收到了消息, 对于接收方来说, 表示:接收方是否已发送了"已接收回执" 给对方
+ @discussion 针对发送的消息, 当接收方读了消息后, 会发回已读回执, 接收到了已读回执, 此标记位会被置为YES;
+ 针对接收的消息, 发送了阅读回执后, 此标记会被置为YES
+ */
+@property (nonatomic) BOOL isDelivered;
+
+/*!
+ @property
  @brief 消息体列表
  */
 @property (nonatomic, strong) NSArray *messageBodies;

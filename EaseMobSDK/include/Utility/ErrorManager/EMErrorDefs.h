@@ -12,7 +12,7 @@
  @enum
  @brief EaseMob SDK 错误定义
  @discussion 
-        SDK系统支持的errorCode 是从1001开始, 但是还是会返回HTTP Response Code, 
+        SDK系统支持的errorCode 是从1000开始, 但是还是会返回HTTP Response Code,
         如果遇到404, 501等ErrorType时, 需要和HTTP的网络请求返回的responseCode进行对比
  @constant EMErrorNotFound                      不存在
  @constant EMErrorServerMaxCountExceeded        发送失败，数量达到上限（每人最多100条离线消息，群组成员达到上线）
@@ -58,8 +58,8 @@ typedef enum : NSUInteger {
     EMErrorServerMaxCountExceeded   = 500,      //发送失败，数量达到上限（每人最多100条离线消息，群组成员达到上线）
     
     //server error
-    EMErrorServerNotLogin     = 1000,           //未登录
-    EMErrorServerNotReachable = 1001,           //连接服务器失败(Ex. 手机客户端无网的时候, 会返回的error)
+    EMErrorServerNotLogin           = 1002,     //未登录
+    EMErrorServerNotReachable,                  //连接服务器失败(Ex. 手机客户端无网的时候, 会返回的error)
     EMErrorServerTimeout,                       //连接超时(Ex. 服务器连接超时会返回的error)
     EMErrorServerAuthenticationFailure,         //用户名或密码错误(Ex. 登录时,用户名密码错误会返回的error)
     EMErrorServerAPNSRegistrationFailure,       //APNS注册失败 (Ex. 登录时, APNS注册失败会返回的error)
@@ -88,7 +88,7 @@ typedef enum : NSUInteger {
     EMErrorGroupInvalidRequired,                //无效的群组申请
     
     //username error
-    EMErrorInvalidUsername,                     //无效的username
+    EMErrorInvalidUsername,                     // 无效的username
     EMErrorInvalidUsername_NULL,                // 无效的用户名(用户名为空)
     EMErrorInvalidUsername_Chinese,             // 无效的用户名(用户名是中文)
     
