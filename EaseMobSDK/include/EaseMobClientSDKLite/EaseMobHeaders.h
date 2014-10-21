@@ -8,6 +8,14 @@
 #define demoApp_EaseMobHeaders_h
 
 // defs
+#define kSDKAppKey @"EASEMOB_APPKEY"
+#define kSDKApnsCertName @"EASEMOB_APNSCERTNAME"
+#define kSDKServerApi @"EASEMOB_API_URL"
+#define kSDKServerChat @"EASEMOB_CHAT_ADDRESS"
+#define kSDKServerGroupDomain @"EASEMOB_GROUP_DOMAIN"
+#define kSDKServerChatDomain @"EASEMOB_CHAT_DOMAIN"
+#define kSDKServerChatPort @"EASEMOB_CHAT_PORT"
+
 #import "EMChatServiceDefs.h"
 #import "EMDeviceManagerDefs.h"
 #import "EMErrorDefs.h"
@@ -63,5 +71,7 @@
 
 //push
 #import "EMPushNotificationOptions.h"
+
+#import "EMAnonymityHelper.h"
 
 #endif

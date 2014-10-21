@@ -198,7 +198,7 @@
 
 /*!
  @method
- @brief 退出群组
+ @brief 退出群组 (需要非owner的权限)
  @param groupId  群组ID
  @param pError   错误信息
  @result 退出的群组对象, 失败返回nil
@@ -208,7 +208,7 @@
 
 /*!
  @method
- @brief 异步方法, 退出群组
+ @brief 异步方法, 退出群组(需要非owner的权限)
  @param groupId  群组ID
  @discussion
         函数执行完, 回调group:didLeave:error:会被触发
@@ -217,12 +217,46 @@
 
 /*!
  @method
- @brief 异步方法, 退出群组
+ @brief 异步方法, 退出群组(需要非owner的权限)
  @param groupId  群组ID
  @param completion 消息完成后的回调
  @param aQueue     回调block时的线程
  */
 - (void)asyncLeaveGroup:(NSString *)groupId
+             completion:(void (^)(EMGroup *group,
+                                  EMGroupLeaveReason reason,
+                                  EMError *error))completion
+                onQueue:(dispatch_queue_t)aQueue;
+
+#pragma mark - destroy group
+
+/*!
+ @method
+ @brief 同步方法， 解散群组，需要owner权限
+ @param groupId  群组ID
+ @param pError   错误信息
+ @result 退出的群组对象, 失败返回nil
+ */
+- (EMGroup *)destroyGroup:(NSString *)groupId
+                    error:(EMError **)pError;
+
+/*!
+ @method
+ @brief 异步方法, 解散群组，需要owner权限
+ @param groupId  群组ID
+ @discussion
+ 函数执行完, 回调group:didLeave:error:会被触发
+ */
+- (void)asyncDestroyGroup:(NSString *)groupId;
+
+/*!
+ @method
+ @brief 异步方法, 解散群组，需要owner权限
+ @param groupId  群组ID
+ @param completion 消息完成后的回调
+ @param aQueue     回调block时的线程
+ */
+- (void)asyncDestroyGroup:(NSString *)groupId
              completion:(void (^)(EMGroup *group,
                                   EMGroupLeaveReason reason,
                                   EMError *error))completion
@@ -505,11 +539,11 @@
  @param pError      错误信息
  @result 返回群组对象
  @discussion
-        此操作需要admin/owner权限
+ 此操作需要admin/owner权限
  */
 - (EMGroup *)changePassword:(NSString *)newPassword
                    forGroup:(NSString *)groupId
-                      error:(EMError **)pError;
+                      error:(EMError **)pError EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
 
 /*!
  @method
@@ -517,11 +551,11 @@
  @param newPassword 新密码
  @param groupId     群组ID
  @discussion
-        此操作需要admin/owner权限.
-        函数执行完, 回调groupDidUpdateInfo:error:会被触发
+ 此操作需要admin/owner权限.
+ 函数执行完, 回调groupDidUpdateInfo:error:会被触发
  */
 - (void)asyncChangePassword:(NSString *)newPassword
-                   forGroup:(NSString *)groupId;
+                   forGroup:(NSString *)groupId EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
 
 /*!
  @method
@@ -531,12 +565,12 @@
  @param completion  消息完成后的回调
  @param aQueue      回调block时的线程
  @discussion
-        此操作需要admin/owner权限
+ 此操作需要admin/owner权限
  */
 - (void)asyncChangePassword:(NSString *)newPassword
                    forGroup:(NSString *)groupId
                  completion:(void (^)(EMGroup *group, EMError *error))completion
-                    onQueue:(dispatch_queue_t)aQueue;
+                    onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
 
 #pragma mark - change occupants' affiliation
 
@@ -549,12 +583,12 @@
  @param pError         错误信息
  @result 返回群组对象
  @discussion
-        此操作需要admin/owner权限
+ 此操作需要admin/owner权限
  */
 - (EMGroup *)changeAffiliation:(EMGroupMemberRole)newAffiliation
                   forOccupants:(NSArray *)occupants
                        inGroup:(NSString *)groupId
-                         error:(EMError **)pError;
+                         error:(EMError **)pError EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
 
 /*!
  @method
@@ -563,12 +597,12 @@
  @param occupants      被更改成员的用户名列表
  @param groupId        群组ID
  @discussion
-        此操作需要admin/owner权限.
-        函数执行完, 回调groupDidUpdateInfo:error:会被触发
+ 此操作需要admin/owner权限.
+ 函数执行完, 回调groupDidUpdateInfo:error:会被触发
  */
 - (void)asyncChangeAffiliation:(EMGroupMemberRole)newAffiliation
                   forOccupants:(NSArray *)occupants
-                       inGroup:(NSString *)groupId;
+                       inGroup:(NSString *)groupId EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
 
 /*!
  @method
@@ -579,14 +613,14 @@
  @param completion     消息完成后的回调
  @param aQueue         回调block时的线程
  @discussion
-        此操作需要admin/owner权限
+ 此操作需要admin/owner权限
  */
 - (void)asyncChangeAffiliation:(EMGroupMemberRole)newAffiliation
                   forOccupants:(NSArray *)occupants
                        inGroup:(NSString *)groupId
                     completion:(void (^)(EMGroup *group,
                                          EMError *error))completion
-                       onQueue:(dispatch_queue_t)aQueue;
+                       onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
 
 #pragma mark - accept invitation
 
@@ -786,6 +820,40 @@
         includesOccupantList:(BOOL)includesOccupantList
                  completion:(void (^)(EMGroup *group,EMError *error))completion
                     onQueue:(dispatch_queue_t)aQueue;
+
+#pragma mark - fetch group bans 
+/*!
+ @method
+ @brief 同步方法, 获取群组黑名单列表
+ @param groupId  群组ID
+ @return         群组黑名单列表
+ @discussion
+        需要owner权限
+ */
+- (NSArray *)fetchGroupBansList:(NSString *)groupId error:(EMError **)pError;
+
+/*!
+ @method
+ @brief 异步方法, 获取群组黑名单列表
+ @param groupId  群组ID
+ @discussion
+        需要owner权限
+        执行完成后，回调[didFetchGroupBans:list:error:]
+ */
+- (void)asyncFetchGroupBansList:(NSString *)groupId;
+
+/*!
+ @method
+ @brief 异步方法, 获取群组黑名单列表
+ @param groupId             群组ID
+ @param completion          消息完成后的回调
+ @param aQueue              回调block时的线程
+ @discussion
+        需要owner权限
+ */
+- (void)asyncFetchGroupBansList:(NSString *)groupId
+                     completion:(void (^)(NSArray *groupBans,EMError *error))completion
+                        onQueue:(dispatch_queue_t)aQueue;
 
 #pragma mark - fetch my groups, Founded in 2.0.3 version
 

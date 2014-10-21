@@ -10,14 +10,6 @@
 #import "EMGroupStyleSetting.h"
 #import "EMChatServiceDefs.h"
 
-typedef enum{
-    eGroupOccupantListNone     = 0,    //全部成员（不包含黑名单）
-    eGroupOccupantListOwner,           //所有者
-    eGroupOccupantListAdmin,           //管理者
-    eGroupOccupantListMember,          //成员
-    eGroupOccupantListBan,             //黑名单
-}EMGroupOccupantListType;
-
 @class EMError;
 
 /*!
@@ -58,19 +50,19 @@ typedef enum{
 
 /*!
  @property
- @brief 群组的所有者列表
+ @brief 群组的所有者
  @discussion
-        群组的所有者不止一人,可以通过动态更改群组成员的角色而成为群组的所有者
+        群组的所有者只有一人
  */
-@property (nonatomic, strong, readonly) NSArray  *owners;
+@property (nonatomic, strong, readonly) NSString *owner;
 
 /*!
  @property
  @brief 群组的管理员列表
  @discussion
-        群组的管理员不止一人,可以通过动态更改群组成员的角色而成为群组的管理员
+ 群组的管理员不止一人,可以通过动态更改群组成员的角色而成为群组的管理员
  */
-@property (nonatomic, strong, readonly) NSArray  *admins;
+@property (nonatomic, strong, readonly) NSArray  *admins EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
 
 /*!
  @property
@@ -80,15 +72,15 @@ typedef enum{
 
 /*!
  @property
- @brief 此群组黑名单中的成员列表
+ @brief 此群组中的所有成员列表(owner, members)
  */
-@property (nonatomic, strong, readonly) NSArray  *bans;
+@property (nonatomic, strong, readonly) NSArray  *occupants;
 
 /*!
  @property
- @brief 此群组中的所有成员列表(owners, members, bans)
+ @brief 此群组黑名单中的成员列表
  */
-@property (nonatomic, strong, readonly) NSArray  *occupants EM_DEPRECATED_IOS(2_0_0, 2_0_8, "不再提供该属性");
+@property (nonatomic, strong, readonly) NSArray  *bans;
 
 /*!
  @property

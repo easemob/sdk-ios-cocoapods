@@ -72,7 +72,7 @@
  */
 - (void)didReceiveGroupInvitationFrom:(NSString *)groupId
                               inviter:(NSString *)username
-                              message:(NSString *)message EM_DEPRECATED_IOS(2_0_0, 2_0_6, "Use -didReceiveGroupInvitationFrom:inviter:message:error:");
+                              message:(NSString *)message EM_DEPRECATED_IOS(2_0_0, 2_0_6, "Use -didAutoAcceptedGroupInvitationFrom:inviter:message:");
 
 /*!
  @method
@@ -232,6 +232,17 @@
  */
 - (void)didFetchGroupOccupantsList:(NSArray *)occupantsList
                              error:(EMError *)error;
+
+/*!
+ @method
+ @brief 获取群组黑名单列表后的回调
+ @param groupId  群组id
+ @param bansList 群组黑名单列表
+ @param error         错误信息
+ */
+- (void)didFetchGroupBans:(NSString *)groupId
+                     list:(NSArray *)bansList
+                    error:(EMError *)error;
 
 /*!
  @method

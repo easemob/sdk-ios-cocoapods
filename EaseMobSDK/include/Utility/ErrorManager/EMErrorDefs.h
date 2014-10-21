@@ -48,6 +48,7 @@
  @constant EMErrorRemoveBuddyFromRosterFailure  删除好友失败
  @constant EMErrorAddBuddyToRosterFailure       添加好友失败
  @constant EMErrorOutOfRateLimited              调用频繁
+ @constant EMErrorPermissionFailure             权限错误
  @constant EMErrorInitFailure                   初始化失败
  @constant EMErrorFailure                       失败（没找到原因）
  @constant EMErrorFeatureNotImplemented         还未实现的功能
@@ -56,6 +57,9 @@ typedef enum : NSUInteger {
     //general error
     EMErrorNotFound                 = 404,      //不存在
     EMErrorServerMaxCountExceeded   = 500,      //发送失败，数量达到上限（每人最多100条离线消息，群组成员达到上线）
+    
+    //configuration error
+    EMErrorConfigInvalidAppKey      = 1000,     //无效的appKey
     
     //server error
     EMErrorServerNotLogin           = 1002,     //未登录
@@ -102,8 +106,11 @@ typedef enum : NSUInteger {
     
     EMErrorRemoveBuddyFromRosterFailure,        //删除好友失败
     EMErrorAddBuddyToRosterFailure,             //添加好友失败
+    EMErrorFetchBuddyListWhileFetching,         //正在获取好友列表时, 又发起一个获取好友列表的操作时返回的errorType
+    EMErrorHasFetchedBuddyList,                 //获取好友列表成功后, 再次发起好友列表请求时返回的errorType
     
     EMErrorOutOfRateLimited,                    //调用频繁
+    EMErrorPermissionFailure,                   //权限错误
     EMErrorInitFailure,                         //初始化失败
     EMErrorFailure,                             //失败（没找到原因）
     EMErrorFeatureNotImplemented,               //还未实现的功能

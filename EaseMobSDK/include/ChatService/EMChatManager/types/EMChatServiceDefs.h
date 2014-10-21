@@ -48,19 +48,6 @@ typedef enum {
 
 /*!
  @enum
- @brief 群组中的成员角色
- @constant eGroupMemberRole_Admin  群组管理员
- @constant eGroupMemberRole_Owner  群组所有者
- @constant eGroupMemberRole_Member 普通成员
- */
-typedef enum {
-    eGroupMemberRole_Admin = 0,
-    eGroupMemberRole_Owner,
-    eGroupMemberRole_Member
-} EMGroupMemberRole;
-
-/*!
- @enum
  @brief 退出群组的原因
  @constant eGroupLeaveReason_BeRemoved 被管理员移除出该群组
  @constant eGroupLeaveReason_UserLeave 用户主动退出该群组
@@ -92,6 +79,19 @@ typedef enum {
     ePushNotificationDisplayStyle_messageSummary,
     ePushNotificationDisplayStyle_messageDetail = ePushNotificationDisplayStyle_messageSummary
 }EMPushNotificationDisplayStyle;
+
+/*!
+ @enum
+ @brief 群组中的成员角色
+ @constant eGroupMemberRole_Admin  群组管理员
+ @constant eGroupMemberRole_Owner  群组所有者
+ @constant eGroupMemberRole_Member 普通成员
+ */
+typedef enum {
+    eGroupMemberRole_Admin = 0,
+    eGroupMemberRole_Owner,
+    eGroupMemberRole_Member
+} EMGroupMemberRole;
 
 
 #define EM_DEPRECATED_IOS(_easemobIntro, _easemobDep, ...) __attribute__((deprecated("")))

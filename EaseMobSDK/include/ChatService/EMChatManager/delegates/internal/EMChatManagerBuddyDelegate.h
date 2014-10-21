@@ -78,7 +78,17 @@
  @param buddyGroupList 好友分组信息
  @since 
  */
-- (void)didUpdateBuddyGroupList:(NSArray *)buddyGroupList;
+- (void)didUpdateBuddyGroupList:(NSArray *)buddyGroupList EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+/*!
+ @method
+ @brief 获取好友列表成功时的回调
+ @discussion
+ @param buddyList 好友列表
+ @param error     错误信息
+ */
+- (void)didFetchedBuddyList:(NSArray *)buddyList
+                      error:(EMError *)error;
 
 /*!
  @method
@@ -88,7 +98,7 @@
  @param username 修改了状态的用户
  */
 - (void)didChangedOnlineStatus:(BOOL)isOnline
-                      forBuddy:(NSString *)username;
+                      forBuddy:(NSString *)username EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
 
 #pragma mark - block
 

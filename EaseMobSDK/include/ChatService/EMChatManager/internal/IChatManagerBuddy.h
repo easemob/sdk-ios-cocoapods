@@ -41,7 +41,38 @@ typedef enum{
  @property
  @brief 获取好友分组信息(由EMBuddyGroup对象组成)
  */
-@property (nonatomic, strong, readonly) NSArray *buddyGroupList;
+@property (nonatomic, strong, readonly) NSArray *buddyGroupList EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+/*!
+ @property
+ @brief 自动获取好友列表(Default is NO), 当为 YES时, 登录成功后会自动调用 asyncFetchBuddyList 方法
+ */
+@property (assign) BOOL autoFetchBuddyList;
+
+/*!
+ @method
+ @brief 手动获取好友列表
+ @discussion
+ @result 好友列表
+ */
+- (NSArray *)fetchBuddyListWithError:(EMError **)pError;
+
+/*!
+ @method
+ @brief 手动获取好友列表(异步方法)
+ @discussion 好友列表获取完成时, 会调用 didFetchedBuddyList:error(EMChatManagerBuddyDelegate.h 中) 回调方法
+ */
+- (void *)asyncFetchBuddyList;
+
+/*!
+ @method
+ @brief 手动获取好友列表(异步方法)
+ @discussion
+ @param completion 获取好友列表完成后的回调
+ @param queue      completion block 回调时的线程
+ */
+- (void *)asyncFetchBuddyListWithCompletion:(void (^)(NSArray *buddyList, EMError *error))completion
+                                    onQueue:(dispatch_queue_t)queue;
 
 #pragma mark - add buddy
 
