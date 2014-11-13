@@ -15,6 +15,13 @@
  */
 @interface EMReceiptResp : EMReceiptBase
 
+
+/*!
+ @property
+ @brief 是否是匿名消息回执
+ */
+@property (assign, nonatomic) BOOL isAnonymous;
+
 /*!
  @method
  @brief 由消息创建回执响应

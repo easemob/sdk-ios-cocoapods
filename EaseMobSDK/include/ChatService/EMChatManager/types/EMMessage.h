@@ -118,6 +118,12 @@
 @property (nonatomic) MessageDeliveryState deliveryState;
 
 /*!
+ @property
+ @brief 是否是匿名消息
+ */
+@property (nonatomic) BOOL isAnonymous;
+
+/*!
  @method
  @brief 创建消息实例
  @discussion 消息实例会在发送过程中内部状态发生更改,比如deliveryState

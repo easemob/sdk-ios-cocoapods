@@ -11,6 +11,7 @@
 #import "EMChatServiceDefs.h"
 
 @class EMError;
+@class EMGroupOccupant;
 
 /*!
  @class
@@ -119,5 +120,13 @@
  @result 返回新创建的群组
  */
 - (id)initWithGroupId:(NSString *)groupId;
+
+/*!
+ @method
+ @brief 通过username获取它的属性(一般只有匿名群中会用到)
+ @param username 需要获取的occupant信息的username
+ @result 返回返回username在群组中的属性
+ */
+- (EMGroupOccupant *)occupantWithUsername:(NSString *)username;
 
 @end

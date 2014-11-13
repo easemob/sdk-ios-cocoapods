@@ -92,6 +92,7 @@
                                               EMError *error))completion
                             onQueue:(dispatch_queue_t)aQueue;
 
+
 #pragma mark - create private group, will be abolished
 
 /*!
