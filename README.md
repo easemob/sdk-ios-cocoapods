@@ -5,10 +5,10 @@ sdk-ios-cocoapods
 
 从2.0.6开始, 小伙伴们可以使用 Cocoapods 来集成环信啦, 集成方法如下:
 
-1. podfile 文件添加如下代码
+1. Podfile 文件添加如下代码
 
-		platform :ios, '6.0'
-		pod 'EaseMobSDK', '~> 2.0'
+		source 'https://github.com/CocoaPods/Specs.git'
+		pod 'EaseMobSDK', :git => 'https://github.com/easemob/sdk-ios-cocoapods.git'
 		
 2. 使用时, 需要引入头文件, 在 pch 预编译文件中, 引入头文件如下:
 
