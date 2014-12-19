@@ -20,6 +20,26 @@
 
 /*!
  @method
+ @brief 用户将要进行自动登录操作的回调
+ @discussion
+ @param loginInfo 登录的用户信息
+ @param error     错误信息
+ @result
+ */
+- (void)willAutoLoginWithInfo:(NSDictionary *)loginInfo error:(EMError *)error;
+
+/*!
+ @method
+ @brief 用户自动登录完成后的回调
+ @discussion
+ @param loginInfo 登录的用户信息
+ @param error     错误信息
+ @result
+ */
+- (void)didAutoLoginWithInfo:(NSDictionary *)loginInfo error:(EMError *)error;
+
+/*!
+ @method
  @brief 用户登录后的回调
  @discussion
  @param loginInfo 登录的用户信息

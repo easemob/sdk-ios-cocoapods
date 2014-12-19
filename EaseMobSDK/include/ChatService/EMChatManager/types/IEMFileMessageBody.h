@@ -14,13 +14,13 @@
  @constant EMAttachmentDownloading       正在下载
  @constant EMAttachmentDownloadSuccessed 下载成功
  @constant EMAttachmentDownloadFailure   下载失败
- @constant EMAttachmentNone              未下载
+ @constant EMAttachmentNotStarted        未下载
  */
 typedef enum : NSUInteger {
     EMAttachmentDownloading,
     EMAttachmentDownloadSuccessed,
     EMAttachmentDownloadFailure,
-    EMAttachmentNone,
+    EMAttachmentNotStarted,
 } EMAttachmentDownloadStatus;
 
 

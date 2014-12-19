@@ -16,6 +16,39 @@
  */
 @protocol IChatManagerLogin <IChatManagerBase>
 
+#pragma mark - properties
+
+/*!
+ @property
+ @brief 当前登录的用户信息
+ */
+@property (nonatomic, strong, readonly) NSDictionary *loginInfo;
+
+/*!
+ @property
+ @brief 当前是否已有登录的用户
+ */
+@property (nonatomic, readonly) BOOL isLoggedIn;
+
+
+#pragma mark - database
+/*!
+ @method
+ @brief 将数据库数据导入新的数据库，旧版sdk数据库采用CoreData,从2.1.0版本开始，换成Sqlite
+ @discussion 同步方法，登录成功之后调用
+ @result     错误信息
+ */
+- (EMError *)importDataToNewDatabase;
+
+/*!
+ @method
+ @brief  调用sdk登录接口，登陆成功之后，sdk内部会默认调用一次该函数
+         从数据库获取信息，包括 好友，好友黑名单，自己相关的群组，被屏蔽的群组的id数组，会话，消息
+ @discussion 登录成功之后调用
+ @result     错误信息
+ */
+- (EMError *)loadDataFromDatabase;
+
 #pragma mark - register
 
 /*!
@@ -112,7 +145,7 @@
 /*!
  @method
  @brief 异步方法, 注销当前登录用户
- @discussion 在注销过程中, EMChatManagerLoginDelegate中的didLogoffWithError:回调会被触发. 目前注销信息不可用
+ @discussion 在注销过程中, EMChatManagerLoginDelegate中的didLogoffWithError:回调会被触发.
  @result
  */
 - (void)asyncLogoff;
@@ -120,27 +153,12 @@
 /*!
  @method
  @brief 异步方法, 注销当前登录用户
- @discussion 目前注销信息不可用
+ @discussion
  @param completion 回调
  @param aQueue     回调时的线程
  @result
  */
 - (void)asyncLogoffWithCompletion:(void (^)(NSDictionary *info, EMError *error))completion
-                         onQueue:(dispatch_queue_t)aQueue;
-
-#pragma mark - properties
-
-/*!
- @property
- @brief 当前登录的用户信息
- */
-@property (nonatomic, strong, readonly) NSDictionary *loginInfo;
-
-/*!
- @property
- @brief 当前是否已有登录的用户
- */
-@property (nonatomic, readonly) BOOL isLoggedIn;
-
+                          onQueue:(dispatch_queue_t)aQueue;
 
 @end

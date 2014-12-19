@@ -30,6 +30,16 @@
  */
 @property (nonatomic, strong, readonly) NSArray *groupList;
 
+#pragma mark - load groups from database
+
+/*!
+ @method
+ @brief  从数据库获取与登陆者相关的群组
+ @return 错误信息
+ @discussion
+ */
+- (NSArray *)loadAllMyGroupsFromDatabase;
+
 #pragma mark - create group, Founded in 2.0.3 version
 
 /*!
@@ -92,6 +102,104 @@
                                               EMError *error))completion
                             onQueue:(dispatch_queue_t)aQueue;
 
+
+#pragma mark - create Anonymous group(匿名群组), Founded in 2.0.9 version
+
+/*!
+ @method
+ @brief 创建匿名群组（同步方法）
+ @param subject        群组名称
+ @param description    群组描述
+ @param welcomeMessage 群组欢迎语
+ @param nickname        创建群组时群主的昵称(匿名聊天时的昵称)
+ @param styleSetting   群组属性配置(groupStyle 必须为 eGroupStyle_PublicAnonymous, 目前只可以设置 maxUsersCount)
+ @param pError          建组的错误。成功为nil
+ @return 创建好的群组
+ @discussion
+ 创建群组成功 判断条件：*pError == nil && returnGroup != nil
+ */
+- (EMGroup *)createAnonymousGroupWithSubject:(NSString *)subject
+                                 description:(NSString *)description
+                       initialWelcomeMessage:(NSString *)welcomeMessage
+                                    nickname:(NSString *)nickname
+                                styleSetting:(EMGroupStyleSetting *)styleSetting
+                                       error:(EMError **)pError;
+
+/*!
+ @method
+ @brief  创建匿名群组（异步方法）。函数执行完, 回调[group:didCreateWithError:]会被触发
+ @param subject        群组名称
+ @param description    群组描述
+ @param welcomeMessage 群组欢迎语
+ @param nickname        创建群组时群主的昵称(匿名聊天时的昵称)
+ @param styleSetting   群组属性配置(groupStyle 必须为 eGroupStyle_PublicAnonymous, 目前只可以设置 maxUsersCount)
+ */
+- (void)asyncCreateAnonymousGroupWithSubject:(NSString *)subject
+                                 description:(NSString *)description
+                       initialWelcomeMessage:(NSString *)welcomeMessage
+                                    nickname:(NSString *)nickname
+                                styleSetting:(EMGroupStyleSetting *)styleSetting;
+
+/*!
+ @method
+ @brief 创建群组（异步方法）。函数执行完, 会调用参数completion
+ @param subject        群组名称
+ @param description    群组描述
+ @param welcomeMessage 群组欢迎语
+ @param nickname        创建群组时群主的昵称(匿名聊天时的昵称)
+ @param styleSetting   群组属性配置(groupStyle 必须为 eGroupStyle_PublicAnonymous, 目前只可以设置 maxUsersCount)
+ @param completion      创建完成后的回调
+ @param aQueue          回调block时的线程
+ @discussion
+ 创建群组成功 判断条件：completion中，error == nil && group != nil
+ */
+- (void)asyncCreateAnonymousGroupWithSubject:(NSString *)subject
+                                 description:(NSString *)description
+                       initialWelcomeMessage:(NSString *)welcomeMessage
+                                    nickname:(NSString *)nickname
+                                styleSetting:(EMGroupStyleSetting *)styleSetting
+                                  completion:(void (^)(EMGroup *group,
+                                                       EMError *error))completion
+                                     onQueue:(dispatch_queue_t)aQueue;
+
+#pragma mark - join Anonymous public group, Founded in 2.0.9 version
+
+/*!
+ @method
+ @brief 加入一个匿名公开群组
+ @param groupId   公开群组的ID
+ @param nickname  匿名群组中的昵称
+ @param pError    错误信息
+ @result 所加入的公开群组
+ */
+- (EMGroup *)joinAnonymousPublicGroup:(NSString *)groupId
+                             nickname:(NSString *)nickname
+                                error:(EMError **)pError;
+
+/*!
+ @method
+ @brief 异步方法, 加入一个匿名公开群组
+ @param groupId   公开群组的ID
+ @param nickname  匿名群组中的昵称
+ @discussion
+ 执行后, 回调didJoinPublicGroup:error:会被触发
+ */
+- (void)asyncJoinAnonymousPublicGroup:(NSString *)groupId
+                             nickname:(NSString *)nickname;
+
+/*!
+ @method
+ @brief 异步方法, 加入一个匿名公开群组
+ @param groupId    公开群组的ID
+ @param nickname   匿名群组中的昵称
+ @param completion 消息完成后的回调
+ @param aQueue     回调block时的线程
+ */
+- (void)asyncJoinAnonymousPublicGroup:(NSString *)groupId
+                             nickname:(NSString *)nickname
+                           completion:(void (^)(EMGroup *group,
+                                                EMError *error))completion
+                              onQueue:(dispatch_queue_t)aQueue;
 
 #pragma mark - create private group, will be abolished
 

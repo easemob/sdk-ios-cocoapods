@@ -83,17 +83,24 @@ typedef enum {
 /*!
  @enum
  @brief 群组中的成员角色
- @constant eGroupMemberRole_Admin  群组管理员
- @constant eGroupMemberRole_Owner  群组所有者
  @constant eGroupMemberRole_Member 普通成员
+ @constant eGroupMemberRole_Admin  群组管理员
+ @constant eGroupMemberRole_Owner  群组创建者
  */
 typedef enum {
-    eGroupMemberRole_Admin = 0,
+    eGroupMemberRole_Member = 0,
+    eGroupMemberRole_Admin,
     eGroupMemberRole_Owner,
-    eGroupMemberRole_Member
 } EMGroupMemberRole;
 
-
-#define EM_DEPRECATED_IOS(_easemobIntro, _easemobDep, ...) __attribute__((deprecated("")))
+/*!
+ @brief 消息回执类型
+ @constant eReceiptTypeRequest   回执请求
+ @constant eReceiptTypeResponse  回执响应
+ */
+typedef enum{
+    eReceiptTypeRequest  = 0,
+    eReceiptTypeResponse,
+}EMReceiptType;
 
 #endif

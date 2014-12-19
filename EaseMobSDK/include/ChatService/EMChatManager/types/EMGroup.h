@@ -51,7 +51,7 @@
 
 /*!
  @property
- @brief 群组的所有者
+ @brief 群组的创建者
  @discussion
         群组的所有者只有一人
  */
@@ -80,6 +80,7 @@
 /*!
  @property
  @brief 此群组黑名单中的成员列表
+ @discussion 需要owner权限才能查看，非owner返回nil
  */
 @property (nonatomic, strong, readonly) NSArray  *bans;
 

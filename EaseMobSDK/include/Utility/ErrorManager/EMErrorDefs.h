@@ -18,7 +18,7 @@
  @constant EMErrorServerMaxCountExceeded        发送失败，数量达到上限（每人最多100条离线消息，群组成员达到上线）
  @constant EMErrorServerNotReachable            连接服务器失败(Ex. 手机客户端无网的时候, 会返回的error)
  @constant EMErrorServerTimeout                 连接超时(Ex. 服务器连接超时会返回的error)
- @constant EMErrorServerAuthenticationFailure   用户名或密码错误(Ex. 登录时,用户名密码错误会返回的error)
+ @constant EMErrorServerAuthenticationFailure   获取token失败(Ex. 登录时用户名密码错误，或者服务器无法返回token)
  @constant EMErrorServerAPNSRegistrationFailure APNS注册失败 (Ex. 登录时, APNS注册失败会返回的error)
  @constant EMErrorServerDuplicatedAccount       注册失败(Ex. 注册时, 如果用户存在, 会返回的error)
  @constant EMErrorServerInsufficientPrivilege   所执行操作的权限不够(Ex. 非管理员删除群成员时, 会返回的error)
@@ -33,6 +33,7 @@
  @constant EMErrorIllegalURI                    URL非法(内部使用)
  @constant EMErrorTooManyLoginRequest           正在登陆的时候又发起了登陆请求
  @constant EMErrorTooManyLogoffRequest          正在登出的时候又发起了登出请求
+ @constant EMErrorMessageInvalid_NULL           无效的消息(为空)
  @constant EMErrorGroupInvalidID_NULL           无效的群组ID(为空)
  @constant EMErrorGroupJoined                   已加入群组
  @constant EMErrorGroupJoinNeedRequired         加入群组需要申请
@@ -47,10 +48,14 @@
  @constant EMErrorPushNotificationInvalidOption 无效的消息推送设置
  @constant EMErrorRemoveBuddyFromRosterFailure  删除好友失败
  @constant EMErrorAddBuddyToRosterFailure       添加好友失败
+ @constant EMErrorCallChatterOffline,           对方不在线
+ @constant EMErrorCallInvalidSessionId,         无效的通话Id
  @constant EMErrorOutOfRateLimited              调用频繁
  @constant EMErrorPermissionFailure             权限错误
+ @constant EMErrorIsExist,                      已存在
  @constant EMErrorInitFailure                   初始化失败
- @constant EMErrorFailure                       失败（没找到原因）
+ @constant EMErrorNetworkNotConnected,          网络未连接
+ @constant EMErrorFailure                       失败
  @constant EMErrorFeatureNotImplemented         还未实现的功能
  */
 typedef enum : NSUInteger {
@@ -65,7 +70,7 @@ typedef enum : NSUInteger {
     EMErrorServerNotLogin           = 1002,     //未登录
     EMErrorServerNotReachable,                  //连接服务器失败(Ex. 手机客户端无网的时候, 会返回的error)
     EMErrorServerTimeout,                       //连接超时(Ex. 服务器连接超时会返回的error)
-    EMErrorServerAuthenticationFailure,         //用户名或密码错误(Ex. 登录时,用户名密码错误会返回的error)
+    EMErrorServerAuthenticationFailure,         //获取token失败(Ex. 登录时用户名密码错误，或者服务器无法返回token)
     EMErrorServerAPNSRegistrationFailure,       //APNS注册失败 (Ex. 登录时, APNS注册失败会返回的error)
     EMErrorServerDuplicatedAccount,             //注册失败(Ex. 注册时, 如果用户存在, 会返回的error)
     EMErrorServerInsufficientPrivilege,         //所执行操作的权限不够(Ex. 非管理员删除群成员时, 会返回的error)
@@ -83,6 +88,9 @@ typedef enum : NSUInteger {
     EMErrorIllegalURI,                          //URL非法(内部使用)
     EMErrorTooManyLoginRequest,                 //正在登陆的时候又发起了登陆请求
     EMErrorTooManyLogoffRequest,                //正在登出的时候又发起了登出请求
+    
+    //message error
+    EMErrorMessageInvalid_NULL,                 //无效的消息(为空)
     
     //group error
     EMErrorGroupInvalidID_NULL,                 //无效的群组ID(为空)
@@ -109,10 +117,16 @@ typedef enum : NSUInteger {
     EMErrorFetchBuddyListWhileFetching,         //正在获取好友列表时, 又发起一个获取好友列表的操作时返回的errorType
     EMErrorHasFetchedBuddyList,                 //获取好友列表成功后, 再次发起好友列表请求时返回的errorType
     
+    //call error
+    EMErrorCallChatterOffline,                  //对方不在线
+    EMErrorCallInvalidSessionId,                //无效的通话Id
+    
     EMErrorOutOfRateLimited,                    //调用频繁
     EMErrorPermissionFailure,                   //权限错误
+    EMErrorIsExist,                             //已存在
     EMErrorInitFailure,                         //初始化失败
-    EMErrorFailure,                             //失败（没找到原因）
+    EMErrorNetworkNotConnected,                 //网络未连接
+    EMErrorFailure,                             //失败
     EMErrorFeatureNotImplemented,               //还未实现的功能
 } EMErrorType;
 

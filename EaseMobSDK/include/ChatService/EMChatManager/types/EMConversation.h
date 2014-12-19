@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "EMChatServiceDefs.h"
+
 @class EMMessage;
 
 /*!
@@ -29,21 +31,21 @@
 
 /*!
  @property
+ @brief 是否接收关于此会话的未读消息变更通知
+ */
+@property (nonatomic, readwrite) BOOL enableUnreadMessagesCountEvent;
+
+/*!
+ @property
  @brief 此会话中的消息列表
  */
-@property (nonatomic, strong, readonly) NSArray *messages;
+@property (nonatomic, strong, readonly) NSArray *messages EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Delete");
 
 /*!
  @property
  @brief 是否接收关于此会话的消息
  */
-@property (nonatomic, readwrite) BOOL enableReceiveMessage;
-
-/*!
- @property
- @brief 是否接收关于此会话的未读消息变更通知
- */
-@property (nonatomic, readwrite) BOOL enableUnreadMessagesCountEvent;
+@property (nonatomic, readwrite) BOOL enableReceiveMessage EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Delete");
 
 #pragma mark - message
 
@@ -54,7 +56,16 @@
  @param aMessageId 将要删除的消息ID
  @result 是否成功删除此消息
  */
-- (BOOL)removeMessage:(NSString *)aMessageId;
+//- (BOOL)removeMessage:(NSString *)aMessageId EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Delete");
+- (BOOL)removeMessageWithId:(NSString *)aMessageId;
+
+/*!
+ @method
+ @brief 删除会话对象中的指定消息
+ @discussion
+ @result 删除是否成功
+ */
+- (BOOL)removeMessage:(EMMessage *)aMessage;
 
 /*!
  @method
@@ -63,33 +74,16 @@
  @param aMessageIds 将要删除的消息ID列表
  @result 成功删除的消息条数
  */
-- (NSUInteger)removeMessages:(NSArray *)aMessageIds;
+- (NSUInteger)removeMessages:(NSArray *)aMessageIds EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Use - removeMessagesWithIds:");
+- (NSUInteger)removeMessagesWithIds:(NSArray *)aMessageIds;
 
 /*!
  @method
  @brief 删除会话对象中相关联所有消息
  @discussion
- @result 成功删除的消息条数
+ @result 删除是否成功
  */
-- (NSUInteger)removeAllMessages;
-
-/*!
- @method
- @brief 根据消息ID从数据库中加载消息
- @discussion 如果数据库中没有这条消息, 方法返回nil
- @param aMessageId 消息ID
- @result 加载的消息
- */
-- (EMMessage *)loadMessage:(NSString *)aMessageId;
-
-/*!
- @method
- @brief 根据消息ID列表从数据库中加载消息
- @discussion 如果数据库中没有某条消息对应的ID, 则不加载这条消息
- @param aMessageIds 消息ID列表
- @result 加载的消息列表
- */
-- (NSArray *)loadMessages:(NSArray *)aMessageIds;
+- (BOOL)removeAllMessages;
 
 /*!
  @method
@@ -101,12 +95,32 @@
 
 /*!
  @method
+ @brief 根据消息ID从数据库中加载消息
+ @discussion 如果数据库中没有这条消息, 方法返回nil
+ @param aMessageId 消息ID
+ @result 加载的消息
+ */
+- (EMMessage *)loadMessage:(NSString *)aMessageId EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Use - loadMessageWithId:");
+- (EMMessage *)loadMessageWithId:(NSString *)aMessageId;
+
+/*!
+ @method
+ @brief 根据消息ID列表从数据库中加载消息
+ @discussion 如果数据库中没有某条消息对应的ID, 则不加载这条消息
+ @param aMessageIds 消息ID列表
+ @result 加载的消息列表
+ */
+- (NSArray *)loadMessages:(NSArray *)aMessageIds EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Use - loadMessagesWithIds:");
+- (NSArray *)loadMessagesWithIds:(NSArray *)aMessageIds;
+
+/*!
+ @method
  @brief 根据时间加载指定条数的消息
  @param aCount 要加载的消息条数
  @param timestamp 时间点, UTC时间, 以毫秒为单位
- @discussion 
-        1. 加载后的消息按照升序排列;
-        2. NSDate返回的timeInterval是以秒为单位的, 如果使用NSDate, 比如 timeIntervalSince1970 方法，需要将 timeInterval 乘以1000
+ @discussion
+ 1. 加载后的消息按照升序排列;
+ 2. NSDate返回的timeInterval是以秒为单位的, 如果使用NSDate, 比如 timeIntervalSince1970 方法，需要将 timeInterval 乘以1000
  @result 加载的消息列表
  */
 - (NSArray *)loadNumbersOfMessages:(NSUInteger)aCount before:(long long)timestamp;
@@ -129,12 +143,12 @@
 
 /*!
  @method
- @brief 把本对话里的所有消息标记为已读/未读
- @discussion
+ @brief 把本对话里的所有消息标记为已读/未读(此方法调用后，需要从数据库重新获取数据)
  @param isRead 已读或未读
  @result 成功标记的消息条数
  */
-- (NSUInteger)markMessagesAsRead:(BOOL)isRead;
+- (NSUInteger)markMessagesAsRead:(BOOL)isRead EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Use - markAllMessagesAsRead:");
+- (BOOL)markAllMessagesAsRead:(BOOL)isRead;
 
 /*!
  @method
@@ -144,7 +158,8 @@
  @param isRead 已读或未读
  @result 是否成功标记此条消息
  */
-- (BOOL)markMessage:(NSString *)aMessageId asRead:(BOOL)isRead;
+- (BOOL)markMessage:(NSString *)aMessageId asRead:(BOOL)isRead EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Use - markMessageWithId:asRead");
+- (BOOL)markMessageWithId:(NSString *)aMessageId asRead:(BOOL)isRead;
 
 #pragma mark - statistics
 

@@ -11,6 +11,13 @@
 #define kSDKUsername   @"username"
 #define kSDKToken      @"token"
 
+#define kSDKConfigKeyPushNickname @"PushNickname"
+#define kSDKConfigKeyAutoLogin @"AutoLogin"
+#define kSDKConfigKeyAutoAcceptGroupInvitation @"AutoAcceptGroupInvitation"
+#define kSDKConfigKeyAutoFetchBuddyList @"AutoFetchBuddyList"
+
+#define EM_DEPRECATED_IOS(_easemobIntro, _easemobDep, ...) __attribute__((deprecated("")))
+
 #pragma mark - buddy chatting state
 typedef enum {
     eChatState_Stopped = 0,

@@ -33,6 +33,7 @@
                         IChatManagerBuddy,
                         IChatManagerSettingOptions,
                         IChatManagerPushNotification>
+
 @required
 
 @end

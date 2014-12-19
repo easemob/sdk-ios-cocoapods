@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "EMChatServiceDefs.h"
+
 #pragma mark - EMReceipt Base
 /*!
  @class
@@ -37,6 +39,12 @@
  @brief 此回执是否用于群聊
  */
 @property (nonatomic) BOOL isGroup;
+
+/*!
+ @property
+ @brief 回执类型
+ */
+@property (nonatomic) EMReceiptType type;
 
 /*!
  @property

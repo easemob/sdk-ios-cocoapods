@@ -33,21 +33,23 @@ typedef enum{
 
 /*!
  @property
- @brief 获取好友列表(由EMBuddy对象组成)
+ @brief 好友列表(由EMBuddy对象组成)
  */
 @property (nonatomic, strong, readonly) NSArray *buddyList;
 
 /*!
  @property
- @brief 获取好友分组信息(由EMBuddyGroup对象组成)
+ @brief 好友黑名单列表(由EMBuddy对象组成)
  */
-@property (nonatomic, strong, readonly) NSArray *buddyGroupList EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+@property (nonatomic, strong, readonly) NSArray *blockedList;
 
 /*!
  @property
- @brief 自动获取好友列表(Default is NO), 当为 YES时, 登录成功后会自动调用 asyncFetchBuddyList 方法
+ @brief 黑名单列表
  */
-@property (assign) BOOL autoFetchBuddyList;
+@property (nonatomic, strong, readonly) NSArray *buddyGroupList EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+#pragma mark - fetch buddy from server
 
 /*!
  @method
@@ -180,12 +182,6 @@ typedef enum{
                      error:(EMError **)pError;
 
 #pragma mark - block
-
-/*!
- @property
- @brief 黑名单
- */
-@property (nonatomic, strong, readonly) NSArray *blockedList;
 
 /*!
  @method

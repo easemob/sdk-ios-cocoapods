@@ -16,6 +16,9 @@
  @brief 聊天消息类
  */
 @interface EMMessage : NSObject
+{
+    BOOL _isOfflineMessage;
+}
 
 /*!
  @property
@@ -65,7 +68,8 @@
  @discussion 针对发送的消息, 当接收方读了消息后, 会发回已读回执, 接收到了已读回执, 此标记位会被置为YES; 
              针对接收的消息, 发送了阅读回执后, 此标记会被置为YES
  */
-@property (nonatomic) BOOL isAcked;
+@property (nonatomic) BOOL isAcked EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Use -isReadAcked");
+@property (nonatomic) BOOL isReadAcked;
 
 /*!
  @property
@@ -73,7 +77,8 @@
  @discussion 针对发送的消息, 当接收方读了消息后, 会发回已读回执, 接收到了已读回执, 此标记位会被置为YES;
  针对接收的消息, 发送了阅读回执后, 此标记会被置为YES
  */
-@property (nonatomic) BOOL isDelivered;
+@property (nonatomic) BOOL isDelivered EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Use -isDeliveredAcked");
+@property (nonatomic) BOOL isDeliveredAcked;
 
 /*!
  @property
@@ -83,9 +88,15 @@
 
 /*!
  @property
+ @brief 消息所属的对话对象的chatter
+ */
+@property (nonatomic, strong) NSString *conversationChatter;
+
+/*!
+ @property
  @brief 消息所属的对话对象
  */
-@property (nonatomic, weak) EMConversation *conversation;
+@property (nonatomic, weak) EMConversation *conversation EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Delete");
 
 /*!
  @property
@@ -113,7 +124,7 @@
 
 /*!
  @property
- @brief 消息送达状态
+ @brief 消息发送状态
  */
 @property (nonatomic) MessageDeliveryState deliveryState;
 
@@ -125,7 +136,7 @@
 
 /*!
  @method
- @brief 创建消息实例
+ @brief 创建消息实例（用于:创建一个新的消息）
  @discussion 消息实例会在发送过程中内部状态发生更改,比如deliveryState
  @param receiver 消息接收方
  @param bodies 消息体列表
@@ -133,6 +144,21 @@
  */
 - (id)initWithReceiver:(NSString *)receiver
                bodies:(NSArray *)bodies;
+
+/*!
+ @method
+ @brief 创建消息实例（用于:已存在于数据库的消息，实例化为消息实例）
+ @discussion 消息实例会在发送过程中内部状态发生更改,比如deliveryState
+ @param messageId 消息id
+ @param sender   消息发送方
+ @param receiver 消息接收方
+ @param bodies 消息体列表
+ @result 消息实例
+ */
+- (id)initMessageWithID:(NSString *)messageId
+                 sender:(NSString *)sender
+               receiver:(NSString *)receiver
+                 bodies:(NSArray *)bodies;
 
 /*!
  @method
@@ -151,5 +177,33 @@
  @result 此消息的消息体列表
  */
 - (NSArray *)removeMessageBody:(id<IEMMessageBody>)body;
+
+/*!
+ @method
+ @brief  更新消息发送状态
+ @result 是否更新成功
+ */
+- (BOOL)updateMessageDeliveryStateToDB;
+
+/*!
+ @method
+ @brief  更新消息扩展属性
+ @result 是否更新成功
+ */
+- (BOOL)updateMessageExtToDB;
+
+/*!
+ @method
+ @brief  更新消息的消息体
+ @result 是否更新成功
+ */
+- (BOOL)updateMessageBodiesToDB;
+
+/*!
+ @method
+ @brief  修改当前 message 的发送状态, 下载状态为 failed (crash 时或者 terminate)
+ @return 是否更新成功
+ */
+- (BOOL)updateMessageStatusFailedToDB;
 
 @end

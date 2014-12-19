@@ -14,11 +14,13 @@
  */
 @protocol IChatManagerSettingOptions <IChatManagerBase>
 
+@optional
+
 /*!
  @property
  @brief 当前登陆用户的昵称, 默认为用户名
  */
-@property (strong, nonatomic) NSString *nickname;
+@property (strong, nonatomic) NSString *apnsNickname;
 
 /*!
  @property
@@ -31,6 +33,13 @@
  4. 用户从另一个设备把当前设备上登陆的用户踢出.
  */
 @property (nonatomic) BOOL isAutoLoginEnabled;
+
+/*!
+ @property
+ @brief 自动获取好友列表(包括好友黑名单，Default is NO), 当为 YES时, 登录成功后会自动调用 asyncFetchBuddyList 方法
+ */
+@property (nonatomic) BOOL autoFetchBuddyList EM_DEPRECATED_IOS(2_0_9, 2_1_1, "isAutoFetchBuddyList");
+@property (nonatomic) BOOL isAutoFetchBuddyList;
 
 /*!
  @property

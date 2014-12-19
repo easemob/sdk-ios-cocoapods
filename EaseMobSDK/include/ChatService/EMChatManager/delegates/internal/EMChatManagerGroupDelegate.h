@@ -60,7 +60,7 @@
  */
 - (void)didAutoAcceptedGroupInvitationFrom:(NSString *)groupId
                                    inviter:(NSString *)username
-                                   message:(NSString *)message;
+                                   message:(NSString *)message EM_DEPRECATED_IOS(2_0_6, 2_1_1, "didAcceptInvitationFromGroup:error:");
 
 /*!
  @method
@@ -199,6 +199,15 @@
 
 /*!
  @method
+ @brief 同意入群申请后，同意者收到的回调
+ @param groupId         申请加入的群组的ID
+ @param username        申请加入的人的username
+ @param error           错误信息
+ */
+- (void)didAcceptApplyJoinGroup:(NSString *)groupId username:(NSString *)username error:(EMError *)error;
+
+/*!
+ @method
  @brief 群组列表变化后的回调
  @param groupList 新的群组列表
  @param error     错误信息
@@ -261,5 +270,17 @@
  */
 - (void)didApplyJoinPublicGroup:(EMGroup *)group
                           error:(EMError *)error;
+
+#pragma mark - Anonymous Group nickname
+
+/*!
+ @method
+ @brief 删除App后, 重新join匿名群时, 获取不到 nickname, 需要app主动提供一个nickname, 如果未主动提供或返回nil, SDK会随机生成一个nickname(字母+数字)
+ @param account 当前登录的用户
+ @param groupId 用户所在的(匿名)群组id
+ @result 用户在该群组中的昵称
+ */
+- (NSString *)nicknameForAccount:(NSString *)account
+                         inGroup:(NSString *)groupId;
 
 @end

@@ -11,8 +11,7 @@
 @class EMMessage;
 @class EMConversation;
 @class EMError;
-@class EMReceiptReq;
-@class EMReceiptResp;
+@class EMReceipt;
 
 /*!
  @protocol
@@ -58,6 +57,17 @@
 
 /*!
  @method
+ @brief 收到消息时的回调
+ @param cmdMessage      消息对象
+ @discussion 当EMConversation对象的enableReceiveMessage属性为YES时, 会触发此回调
+ 针对有附件的消息, 此时附件还未被下载.
+ 附件下载过程中的进度回调请参考didFetchingMessageAttachments:progress:,
+ 下载完所有附件后, 回调didMessageAttachmentsStatusChanged:error:会被触发
+ */
+- (void)didReceiveCmdMessage:(EMMessage *)cmdMessage;
+
+/*!
+ @method
  @brief SDK接收到消息时, 下载附件的进度回调, 回调方法有不在主线程中调用, 需要App自己切换到主线程中执行UI的刷新等操作
  @discussion SDK接收到消息时, 有以下两种情况:
     1. 如果是带缩略图的消息时(图片或Video), 会自动下载缩略图, 
@@ -90,7 +100,7 @@
  @param resp 收到的"已读回执"对象, 包括 from, to, chatId等
  @result
  */
-- (void)didReceiveHasReadResponse:(EMReceiptResp *)resp;
+- (void)didReceiveHasReadResponse:(EMReceipt *)resp;
 
 /*!
  @method
@@ -99,7 +109,7 @@
  @param resp 收到的"已送达回执"对象, 包括 from, to, chatId等
  @result
  */
-- (void)didReceiveHasDeliveredResponse:(EMReceiptResp *)resp;
+- (void)didReceiveHasDeliveredResponse:(EMReceipt *)resp;
 
 /*!
  @method
@@ -128,11 +138,20 @@
 
 /*!
  @method
- @brief 离线消息接收完成的回调
+ @brief 离线非透传消息接收完成的回调
  @discussion
  @param offlineMessages 接收到的离线列表
  @result
  */
 - (void)didFinishedReceiveOfflineMessages:(NSArray *)offlineMessages;
+
+/*!
+ @method
+ @brief 离线透传消息接收完成的回调
+ @discussion
+ @param offlineCmdMessages 接收到的离线透传消息列表
+ @result
+ */
+- (void)didFinishedReceiveOfflineCmdMessages:(NSArray *)offlineCmdMessages;
 
 @end
