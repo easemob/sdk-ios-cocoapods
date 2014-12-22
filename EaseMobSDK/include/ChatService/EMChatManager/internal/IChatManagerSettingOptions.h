@@ -20,6 +20,7 @@
  @property
  @brief 当前登陆用户的昵称, 默认为用户名
  */
+@property (strong, nonatomic) NSString *nickname EM_DEPRECATED_IOS(2_0_6, 2_1_1, "apnsNickname");
 @property (strong, nonatomic) NSString *apnsNickname;
 
 /*!
