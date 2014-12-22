@@ -20,7 +20,6 @@
 @interface EMConversationInternal : NSObject
 {
     __weak id<ConversationDelegate> _delegate;
-    NSUInteger _unreadMessagesCount;
 }
 
 - (id)initWithChatter:(NSString *)chatter
@@ -31,7 +30,7 @@
 @property (nonatomic) BOOL isGroup;
 @property (nonatomic) BOOL enableUnreadMessagesCountEvent;
 @property (strong, nonatomic) EMMessage *latestMessage;
-@property (nonatomic) NSUInteger unreadMessagesCount;
+@property (nonatomic) NSInteger unreadMessagesCount;
 
 - (void)updateUnreadMessagesCountEventToEnable:(BOOL)isEnable;
 

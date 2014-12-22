@@ -109,11 +109,10 @@
  @method
  @brief 删除所有会话对象
  @discussion
- @param chatters        要被删除的会话对象所对应的用户名列表
  @param aDeleteMessages 是否删除这个会话对象所关联的聊天记录
  @result 是否成功执行
  */
-- (BOOL)removeAllConversationsByChatter:(NSString *)chatter deleteMessages:(BOOL)aDeleteMessages;
+- (BOOL)removeAllConversationsWithDeleteMessages:(BOOL)aDeleteMessages;
 
 #pragma mark - message counter
 
