@@ -60,7 +60,9 @@
  @param pError   错误信息
  @result 是否注册成功
  */
-- (BOOL)registerNewAccount:(NSString *)username password:(NSString *)password error:(EMError **)pError;
+- (BOOL)registerNewAccount:(NSString *)username
+                  password:(NSString *)password
+                     error:(EMError **)pError;
 
 /*!
  @method
@@ -136,11 +138,10 @@
 /*!
  @method
  @brief 注销当前登录用户
- @discussion 目前注销信息不可用
  @param pError 错误信息
  @result 返回注销信息
  */
-- (NSDictionary *)logoffWithError:(EMError **)pError;
+- (NSDictionary *)logoffWithError:(EMError **)pError EM_DEPRECATED_IOS(2_0_6, 2_1_1, "Use - logoffWithUnbindDeviceToken:error:");
 
 /*!
  @method
@@ -148,7 +149,7 @@
  @discussion 在注销过程中, EMChatManagerLoginDelegate中的didLogoffWithError:回调会被触发.
  @result
  */
-- (void)asyncLogoff;
+- (void)asyncLogoff EM_DEPRECATED_IOS(2_0_6, 2_1_1, "Use - asyncLogoffWithUnbindDeviceToken:");
 
 /*!
  @method
@@ -159,6 +160,37 @@
  @result
  */
 - (void)asyncLogoffWithCompletion:(void (^)(NSDictionary *info, EMError *error))completion
-                          onQueue:(dispatch_queue_t)aQueue;
+                          onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_6, 2_1_1, "Use - asyncLogoffWithUnbindDeviceToken:completion:onQueue:");
+
+/*!
+ @method
+ @brief 注销当前登录用户
+ @discussion 当接收到【didLoginFromOtherDevice】和【didRemovedFromServer】的回调时，调用此方法，isUnbind传NO
+ @param isUnbind 是否解除device token
+ @param pError 错误信息
+ @result 返回注销信息
+ */
+- (NSDictionary *)logoffWithUnbindDeviceToken:(BOOL)isUnbind
+                                        error:(EMError **)pError;
+
+/*!
+ @method
+ @brief 异步方法, 注销当前登录用户
+ @discussion 当接收到【didLoginFromOtherDevice】和【didRemovedFromServer】的回调时，调用此方法，isUnbind传NO
+ @result 完成后【didLogoffWithError:】回调会被触发.
+ */
+- (void)asyncLogoffWithUnbindDeviceToken:(BOOL)isUnbind;
+
+/*!
+ @method
+ @brief 异步方法, 注销当前登录用户
+ @discussion 当接收到【didLoginFromOtherDevice】和【didRemovedFromServer】的回调时，调用此方法，isUnbind传NO
+ @param completion 回调
+ @param aQueue     回调时的线程
+ @result
+ */
+- (void)asyncLogoffWithUnbindDeviceToken:(BOOL)isUnbind
+                              completion:(void (^)(NSDictionary *info, EMError *error))completion
+                                 onQueue:(dispatch_queue_t)aQueue;
 
 @end

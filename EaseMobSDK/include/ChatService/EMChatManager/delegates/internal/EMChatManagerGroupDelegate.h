@@ -51,6 +51,18 @@
 
 /*!
  @method
+ @brief 收到了其它群组的加入邀请
+ @param groupId  群组ID
+ @param username 邀请人名称
+ @param message  邀请信息
+ @discussion
+ */
+- (void)didReceiveGroupInvitationFrom:(NSString *)groupId
+                              inviter:(NSString *)username
+                              message:(NSString *)message EM_DEPRECATED_IOS(2_0_0, 2_0_6, "Use -didAutoAcceptedGroupInvitationFrom:inviter:message:");
+
+/*!
+ @method
  @brief 收到了已自动加入某个群组的通知（你收到通知时已是该群成员）
  @param groupId  群组ID
  @param username 邀请人名称
@@ -64,15 +76,12 @@
 
 /*!
  @method
- @brief 收到了其它群组的加入邀请
- @param groupId  群组ID
- @param username 邀请人名称
- @param message  邀请信息
- @discussion
+ @brief 接受群组邀请并加入群组后的回调
+ @param group 所接受的群组
+ @param error 错误信息
  */
-- (void)didReceiveGroupInvitationFrom:(NSString *)groupId
-                              inviter:(NSString *)username
-                              message:(NSString *)message EM_DEPRECATED_IOS(2_0_0, 2_0_6, "Use -didAutoAcceptedGroupInvitationFrom:inviter:message:");
+- (void)didAcceptInvitationFromGroup:(EMGroup *)group
+                               error:(EMError *)error;
 
 /*!
  @method
@@ -87,15 +96,6 @@
                               inviter:(NSString *)username
                               message:(NSString *)message
                                 error:(EMError *)error;
-
-/*!
- @method
- @brief 接受群组邀请后的回调
- @param group 所接受的群组
- @param error 错误信息
- */
-- (void)didAcceptInvitationFromGroup:(EMGroup *)group
-                               error:(EMError *)error;
 
 /*!
  @method

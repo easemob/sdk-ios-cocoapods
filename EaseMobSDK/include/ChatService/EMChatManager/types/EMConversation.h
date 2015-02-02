@@ -87,8 +87,8 @@
 
 /*!
  @method
- @brief 根据消息ID列表从数据库中加载消息
- @discussion 如果数据库中没有某条消息对应的ID, 则不加载这条消息
+ @brief 从数据库中加载消息
+ @discussion
  @result 加载的消息列表
  */
 - (NSArray *)loadAllMessages;

@@ -34,6 +34,12 @@ typedef enum : NSUInteger {
 
 /*!
  @property
+ @brief 文件uuid
+ */
+@property (nonatomic, strong) NSString *uuid;
+
+/*!
+ @property
  @brief 文件消息体的显示名
  */
 @property (nonatomic, strong) NSString *displayName;

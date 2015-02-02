@@ -37,8 +37,20 @@
  @brief  从数据库获取与登陆者相关的群组
  @return 错误信息
  @discussion
+        直接从数据库中获取,并不会返回相关回调方法;
+        若希望返回相关回调方法,请使用loadAllMyGroupsFromDatabaseWithAppend2Chat:
  */
-- (NSArray *)loadAllMyGroupsFromDatabase;
+- (NSArray *)loadAllMyGroupsFromDatabase EM_DEPRECATED_IOS(2_1_0, 2_1_2, "Use - loadAllMyGroupsFromDatabaseWithAppend2Chat:");
+
+/*!
+ @method
+ @brief  从数据库获取与登陆者相关的群组
+ @param append2Chat  是否加到内存中。
+        YES为加到内存中。加到内存中之后, 会有相应的回调被触发从而更新UI;
+        NO为不加到内存中。如果不加到内存中, 则只会直接添加进DB, 不会有SDK的回调函数被触发从而去更新UI。
+ @return 错误信息
+ */
+- (NSArray *)loadAllMyGroupsFromDatabaseWithAppend2Chat:(BOOL)append2Chat;
 
 #pragma mark - create group, Founded in 2.0.3 version
 

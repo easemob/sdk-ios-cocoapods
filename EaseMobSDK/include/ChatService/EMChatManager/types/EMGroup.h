@@ -51,9 +51,39 @@
 
 /*!
  @property
+ @brief 此群组的密码
+ */
+@property (nonatomic, strong, readonly) NSString *password EM_DEPRECATED_IOS(2_0_3, 2_1_3, "Delete");
+
+/*!
+ @property
+ @brief 此群是否为公开群组
+ */
+@property (nonatomic, readonly) BOOL isPublic;
+
+/*!
+ @property
+ @brief  群组属性配置
+ */
+@property (nonatomic, strong, readonly) EMGroupStyleSetting *groupSetting;
+
+/*!
+ @property
+ @brief  此群组是否接收推送通知
+ */
+@property (nonatomic, readonly) BOOL isPushNotificationEnabled;
+
+/*!
+ @property
+ @brief  此群组是否被屏蔽
+ */
+@property (nonatomic, readonly) BOOL isBlocked;
+
+/*!
+ @property
  @brief 群组的创建者
  @discussion
-        群组的所有者只有一人
+ 群组的所有者只有一人
  */
 @property (nonatomic, strong, readonly) NSString *owner;
 
@@ -83,36 +113,6 @@
  @discussion 需要owner权限才能查看，非owner返回nil
  */
 @property (nonatomic, strong, readonly) NSArray  *bans;
-
-/*!
- @property
- @brief 此群组的密码
- */
-@property (nonatomic, strong, readonly) NSString *password;
-
-/*!
- @property
- @brief 此群是否为公开群组
- */
-@property (nonatomic, readonly) BOOL isPublic;
-
-/*!
- @property
- @brief  群组属性配置
- */
-@property (nonatomic, strong, readonly) EMGroupStyleSetting *groupSetting;
-
-/*!
- @property
- @brief  此群组是否接收推送通知
- */
-@property (nonatomic, readonly) BOOL isPushNotificationEnabled;
-
-/*!
- @property
- @brief  此群组是否被屏蔽
- */
-@property (nonatomic, readonly) BOOL isBlocked;
 
 /*!
  @method

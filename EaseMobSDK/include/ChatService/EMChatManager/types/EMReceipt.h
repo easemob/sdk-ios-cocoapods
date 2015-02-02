@@ -17,6 +17,12 @@
 
 /*!
  @property
+ @brief 回执所属的对话对象的chatter
+ */
+@property (strong, nonatomic) NSString *conversationChatter;
+
+/*!
+ @property
  @brief 是否是匿名消息回执
  */
 @property (assign, nonatomic) BOOL isAnonymous;

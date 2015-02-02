@@ -10,11 +10,11 @@
 // defs
 #define kSDKAppKey @"EASEMOB_APPKEY"
 #define kSDKApnsCertName @"EASEMOB_APNSCERTNAME"
-#define kSDKServerApi @"EASEMOB_API_URL"
-#define kSDKServerChat @"EASEMOB_CHAT_ADDRESS"
+#define kSDKServerApi @"EASEMOB_API_ADDRESS"
+#define kSDKServerChat @"EASEMOB_IM_ADDRESS"
+#define kSDKServerChatPort @"EASEMOB_IM_PORT"
 #define kSDKServerGroupDomain @"EASEMOB_GROUP_DOMAIN"
 #define kSDKServerChatDomain @"EASEMOB_CHAT_DOMAIN"
-#define kSDKServerChatPort @"EASEMOB_CHAT_PORT"
 
 #import "EMChatServiceDefs.h"
 #import "EMDeviceManagerDefs.h"
