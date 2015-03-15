@@ -30,6 +30,12 @@
  */
 @property (nonatomic, readonly) BOOL isLoggedIn;
 
+/*!
+ @property
+ @brief 是否连上聊天服务器
+ */
+@property (nonatomic, readonly) BOOL isConnected;
+
 
 #pragma mark - database
 /*!
@@ -43,7 +49,7 @@
 /*!
  @method
  @brief  调用sdk登录接口，登陆成功之后，sdk内部会默认调用一次该函数
-         从数据库获取信息，包括 好友，好友黑名单，自己相关的群组，被屏蔽的群组的id数组，会话，消息
+         从数据库获取信息，包括自己相关的群组，被屏蔽的群组的id数组，会话，消息
  @discussion 登录成功之后调用
  @result     错误信息
  */

@@ -15,6 +15,8 @@
 #define kSDKServerChatPort @"EASEMOB_IM_PORT"
 #define kSDKServerGroupDomain @"EASEMOB_GROUP_DOMAIN"
 #define kSDKServerChatDomain @"EASEMOB_CHAT_DOMAIN"
+#define kSDKConfigEnableConsoleLogger @"EASEMOB_CONFIG_ENABLECONSOLELOGGER"
+#define kSDKConfigUseHttps @"EASEMOB_CONFIG_USEHTTPS"
 
 #import "EMChatServiceDefs.h"
 #import "EMDeviceManagerDefs.h"
@@ -71,6 +73,7 @@
 //push
 #import "EMPushNotificationOptions.h"
 
+//Anonymous
 #import "EMAnonymousHelper.h"
 
 #endif

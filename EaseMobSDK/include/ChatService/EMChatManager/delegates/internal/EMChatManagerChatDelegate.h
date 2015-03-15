@@ -68,6 +68,17 @@
 
 /*!
  @method
+ @brief 收到发送消错误的回调
+ @param messageId           消息Id
+ @param conversationChatter 会话的username/groupId
+ @param error               错误信息
+ */
+- (void)didReceiveMessageId:(NSString *)messageId
+                    chatter:(NSString *)conversationChatter
+                      error:(EMError *)error;
+
+/*!
+ @method
  @brief SDK接收到消息时, 下载附件的进度回调, 回调方法有不在主线程中调用, 需要App自己切换到主线程中执行UI的刷新等操作
  @discussion SDK接收到消息时, 有以下两种情况:
     1. 如果是带缩略图的消息时(图片或Video), 会自动下载缩略图, 

@@ -45,7 +45,7 @@ typedef enum{
 
 /*!
  @property
- @brief 黑名单列表
+ @brief 群组分组列表
  */
 @property (nonatomic, strong, readonly) NSArray *buddyGroupList EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
 
@@ -91,7 +91,7 @@ typedef enum{
 - (BOOL)addBuddy:(NSString *)username
     withNickname:(NSString *)nickname
          message:(NSString *)message
-           error:(EMError **)pError __attribute__((deprecated("")));
+           error:(EMError **)pError EM_DEPRECATED_IOS(2_0_6, 2_0_7, "Use- addBuddy:message:error:");
 
 /*!
  @method
@@ -122,7 +122,7 @@ typedef enum{
     withNickname:(NSString *)nickname
          message:(NSString *)message
         toGroups:(NSArray *)groupNames
-           error:(EMError **)pError __attribute__((deprecated("")));
+           error:(EMError **)pError EM_DEPRECATED_IOS(2_0_6, 2_0_7, "Use- addBuddy:message:toGroups:error:");
 
 /*!
  @method
@@ -181,7 +181,7 @@ typedef enum{
                     reason:(NSString *)reason
                      error:(EMError **)pError;
 
-#pragma mark - block
+#pragma mark - fetch block
 
 /*!
  @method
@@ -209,11 +209,14 @@ typedef enum{
  获取黑名单成功 判断条件：completion中，error == nil
  函数执行完, 会调用参数completion
  */
+
+- (void)asyncFetchBlockListWithCompletion:(void (^)(NSArray *blockedList, EMError *error))completion
+                                  onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_6, 2_0_7, "Use -asyncFetchBlockedListWithCompletion:onQueue:");
+
 - (void)asyncFetchBlockedListWithCompletion:(void (^)(NSArray *blockedList, EMError *error))completion
                                     onQueue:(dispatch_queue_t)aQueue;
 
-- (void)asyncFetchBlockListWithCompletion:(void (^)(NSArray *blockedList, EMError *error))completion
-                                    onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_6, 2_0_7, "Use -asyncFetchBlockedListWithCompletion:onQueue:");
+#pragma mark - block buddy
 
 /*!
  @method
@@ -227,6 +230,8 @@ typedef enum{
  */
 - (EMError *)blockBuddy:(NSString *)username
            relationship:(EMRelationship)relationship;
+
+#pragma mark - unblock buddy
 
 /*!
  @method

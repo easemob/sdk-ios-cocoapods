@@ -47,6 +47,13 @@
 
 /*!
  @property
+ @brief 是否使用ip
+ @discussion
+ */
+@property (nonatomic) BOOL isUseIp;
+
+/*!
+ @property
  @brief 开启消息送达通知(默认是不开启的)
  @discussion
  */

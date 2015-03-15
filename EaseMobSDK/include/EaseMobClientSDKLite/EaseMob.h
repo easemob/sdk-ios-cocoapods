@@ -47,6 +47,19 @@
 
 /*!
  @method
+ @brief 初始化SDK
+ @discussion 失败返回EMError,成功返回nil
+ @param anAppKey        申请应用时的appkey
+ @param anAPNSCertName  需要使用的APNS证书名字(需要与后台上传时的APNS证书名字相同, 客户端打包时的证书, 需要与服务器后台的证书一一对应)
+ @param anOtherConfig   其他初始化配置。目前支持自定义 1、是否打印Console Log（对应key为kSDKConfigEnableConsoleLogger）
+ @result 初始化是否成功
+ */
+- (EMError *)registerSDKWithAppKey:(NSString *)anAppKey
+                      apnsCertName:(NSString *)anAPNSCertName
+                       otherConfig:(NSDictionary *)anOtherConfig;
+
+/*!
+ @method
  @brief App切换到后台时, 开启后台运行模式, 在后台时, 仍可接收消息
  @discussion 要使SDK在后台仍然能正常运行, 有两种方式可以实现:
     1. 在工程的Capabilities中, 设置Background Modes, 勾选 Voice Over IP, 无需调用此方法, 也可保持App在后台运行(但开启此项时, 如果应用未使用到VOIP, 上传到App Store会有被拒绝的风险)
