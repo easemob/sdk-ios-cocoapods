@@ -8,6 +8,11 @@
 #ifndef EMNetworkMonitorDefs_h
 #define EMNetworkMonitorDefs_h
 
+typedef enum : NSUInteger {
+    eEMConnectionConnected,   //连接成功
+    eEMConnectionDisconnected,//未连接
+} EMConnectionState;
+
 /*!
  @enum
  @brief 网络状态
@@ -20,5 +25,18 @@ typedef enum {
     eConnectionType_WWAN,
     eConnectionType_WIFI
 }EMConnectionType;
+
+/*!
+ @enum
+ @brief 网络类型
+ @constant eConnectionName_Internet 网络连接
+ @constant eConnectionName_LocalWIFI 本地wifi
+ @constant eConnectionName_Default 网络连接
+ */
+typedef enum {
+    eConnectionName_Internet = 0,
+    eConnectionName_LocalWIFI,
+    eConnectionName_Default = eConnectionName_Internet
+}EMConnectionName;
 
 #endif

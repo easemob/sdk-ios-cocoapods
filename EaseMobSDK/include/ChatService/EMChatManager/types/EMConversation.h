@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "EMChatServiceDefs.h"
+#import "EMChatManagerDefs.h"
 
 @class EMMessage;
 
@@ -34,6 +34,12 @@
  @brief 是否接收关于此会话的未读消息变更通知
  */
 @property (nonatomic, readwrite) BOOL enableUnreadMessagesCountEvent;
+
+/*!
+ @property
+ @brief 会话扩展
+ */
+@property (nonatomic, strong) NSDictionary *ext;
 
 /*!
  @property

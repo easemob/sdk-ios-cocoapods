@@ -7,10 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum : NSUInteger {
-    eEMConnectionConnected,   //连接成功
-    eEMConnectionDisconnected,//未连接
-} EMConnectionState;
+#import "EMNetworkMonitorDefs.h"
 
 @protocol IEMFileMessageBody;
 

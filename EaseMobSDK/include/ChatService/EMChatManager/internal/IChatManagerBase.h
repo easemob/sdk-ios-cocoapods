@@ -6,7 +6,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "EMChatServiceDefs.h"
+
+#import "commonDefs.h"
 
 @protocol EMChatManagerDelegate;
 

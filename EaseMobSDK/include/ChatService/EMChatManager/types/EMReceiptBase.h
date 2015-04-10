@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "EMChatServiceDefs.h"
+#import "EMChatManagerDefs.h"
 
 #pragma mark - EMReceipt Base
 /*!

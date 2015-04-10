@@ -17,6 +17,7 @@
 @protocol EMChatManagerBuddyDelegate <EMChatManagerDelegateBase>
 
 @optional
+
 /*!
  @method
  @brief 接收到好友请求时的通知
@@ -102,6 +103,12 @@
 
 #pragma mark - block
 
+/*!
+ @method
+ @brief 好友黑名单有更新时的回调
+ @discussion
+ @param blockedList 被加入黑名单的好友的列表
+ */
 - (void)didUpdateBlockedList:(NSArray *)blockedList;
 
 /*!

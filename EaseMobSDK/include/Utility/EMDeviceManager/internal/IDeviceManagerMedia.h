@@ -160,10 +160,8 @@
  @discussion
  @result
  */
-- (void)asynStopRecordingWithCompletion:(void (^)(NSString *aFilePath,
-                                                        NSInteger duration,
-                                                        NSError *error))completion
-                                      onQueue:(dispatch_queue_t)aQueue;
+- (void)asynStopRecordingWithCompletion:(void (^)(NSString *aFilePath, NSInteger duration, NSError *error))completion
+                                onQueue:(dispatch_queue_t)aQueue;
 
 /*!
  @method

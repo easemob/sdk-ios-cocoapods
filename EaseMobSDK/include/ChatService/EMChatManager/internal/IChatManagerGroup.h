@@ -6,7 +6,9 @@
  */
 
 #import <Foundation/Foundation.h>
+
 #import "IChatManagerBase.h"
+#import "EMGroupManagerDefs.h"
 
 @class EMGroup;
 @class EMError;

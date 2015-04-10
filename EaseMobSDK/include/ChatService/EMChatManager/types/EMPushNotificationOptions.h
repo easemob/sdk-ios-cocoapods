@@ -6,7 +6,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "EMChatServiceDefs.h"
+#import "EMChatManagerDefs.h"
 
 /*!
  @class
@@ -30,7 +30,13 @@
  @property
  @brief 推送消息是否开启了免打扰模式，YES:开启免打扰；NO:未开启免打扰
  */
-@property (nonatomic) BOOL noDisturbing;
+@property (nonatomic) BOOL noDisturbing EM_DEPRECATED_IOS(2_0_6, 2_1_4, "Use - noDisturbStatus");
+
+/*!
+ @property
+ @brief 推送消息的免打扰设置，YES:开启免打扰；NO:未开启免打扰
+ */
+@property (nonatomic) EMPushNotificationNoDisturbStatus noDisturbStatus;
 
 /*!
  @property

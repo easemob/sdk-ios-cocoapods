@@ -7,8 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CGGeometry.h>
+
 #import "IEMFileMessageBody.h"
-#import "EMChatServiceDefs.h"
+#import "EMChatManagerDefs.h"
 
 @class EMChatImage;
 @class EMMessage;

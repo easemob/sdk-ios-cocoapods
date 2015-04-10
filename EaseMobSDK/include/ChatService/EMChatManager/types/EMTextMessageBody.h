@@ -6,8 +6,9 @@
  */
 
 #import <Foundation/Foundation.h>
+
 #import "IEMMessageBody.h"
-#import "EMChatServiceDefs.h"
+#import "EMChatManagerDefs.h"
 
 @class EMChatText;
 @protocol IEMChatObject;

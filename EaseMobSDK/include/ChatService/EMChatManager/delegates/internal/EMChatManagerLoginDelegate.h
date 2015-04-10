@@ -83,11 +83,14 @@
 
 /*!
  @method
- @brief 成功注册新用户后的回调
+ @brief 注册新用户后的回调
+ @param error        错误信息
  @discussion
  @result
  */
-- (void)didRegisterNewAccount:(NSString *)username password:(NSString *)password error:(EMError *)error;
+- (void)didRegisterNewAccount:(NSString *)username
+                     password:(NSString *)password
+                        error:(EMError *)error;
 
 /*!
  @method

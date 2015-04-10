@@ -4,10 +4,11 @@
  @author EaseMob Inc.
  @version 1.0
  */
+
 #ifndef demoApp_EaseMobHeaders_h
 #define demoApp_EaseMobHeaders_h
 
-// defs
+//defs
 #define kSDKAppKey @"EASEMOB_APPKEY"
 #define kSDKApnsCertName @"EASEMOB_APNSCERTNAME"
 #define kSDKServerApi @"EASEMOB_API_ADDRESS"
@@ -18,20 +19,21 @@
 #define kSDKConfigEnableConsoleLogger @"EASEMOB_CONFIG_ENABLECONSOLELOGGER"
 #define kSDKConfigUseHttps @"EASEMOB_CONFIG_USEHTTPS"
 
-#import "EMChatServiceDefs.h"
+//defs headers
+#import "EMChatManagerDefs.h"
 #import "EMDeviceManagerDefs.h"
 #import "EMErrorDefs.h"
 
-// managers & delegates
+//managers & delegates
 #import "IChatManager.h"
 #import "IDeviceManager.h"
 #import "IChatManagerDelegate.h"
 #import "IDeviceManagerDelegate.h"
 
-// messages
+//messages
 #import "EMMessage.h"
 
-// message bodies
+//message bodies
 #import "IEMMessageBody.h"
 #import "EMVideoMessageBody.h"
 #import "EMVoiceMessageBody.h"
@@ -41,7 +43,7 @@
 #import "EMCommandMessageBody.h"
 #import "EMFileMessageBody.h"
 
-// chat types
+//chat types
 #import "EMChatVideo.h"
 #import "EMChatVoice.h"
 #import "EMChatText.h"
@@ -50,22 +52,15 @@
 #import "EMChatFile.h"
 #import "EMChatCommand.h"
 
-// user types
+//user types
 #import "EMBuddy.h"
-#import "EMBuddyGroup.h"
 
-// chat sessions
+//chat sessions
 #import "EMGroup.h"
 #import "EMGroupStyleSetting.h"
 #import "IChatImageOptions.h"
 #import "EMConversation.h"
 #import "EMReceipt.h"
-
-// chat progress
-#import "IEMChatProgressDelegate.h"
-
-// cryptor
-#import "IEMChatCryptor.h"
 
 //error
 #import "EMError.h"
@@ -73,7 +68,10 @@
 //push
 #import "EMPushNotificationOptions.h"
 
-//Anonymous
-#import "EMAnonymousHelper.h"
+//chat progress
+#import "IEMChatProgressDelegate.h"
+
+//cryptor
+#import "IEMChatCryptor.h"
 
 #endif

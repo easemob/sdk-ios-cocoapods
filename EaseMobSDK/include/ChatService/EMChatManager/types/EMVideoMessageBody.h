@@ -6,8 +6,9 @@
  */
 
 #import <Foundation/Foundation.h>
+
 #import "IEMFileMessageBody.h"
-#import "EMChatServiceDefs.h"
+#import "EMChatManagerDefs.h"
 
 @class EMChatVideo;
 @protocol IEMChatObject;
