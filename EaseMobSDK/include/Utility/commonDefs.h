@@ -22,20 +22,20 @@
 #define EM_DEPRECATED_IOS(_easemobIntro, _easemobDep, ...) __attribute__((deprecated("")))
 
 #pragma mark - buddy chatting state
-typedef enum {
+typedef NS_ENUM(NSInteger, EMChatState) {
     eChatState_Stopped = 0,
     eChatState_Composing,
     eChatState_Paused,
-}EMChatState;
+};
 
 #pragma mark - buddy online state
-typedef enum {
+typedef NS_ENUM(NSInteger, EMOnlineStatus) {
     eOnlineStatus_OffLine = 0,
     eOnlineStatus_Online,
     eOnlineStatus_Away,
     eOnlineStatus_Busy,
     eOnlineStatus_Invisible,
     eOnlineStatus_Do_Not_Disturb
-}EMOnlineStatus;
+};
 
 #endif

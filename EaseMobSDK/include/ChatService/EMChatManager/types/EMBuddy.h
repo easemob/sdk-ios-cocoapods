@@ -14,12 +14,12 @@
  @constant eEMBuddyFollowState_BeFollowed   登录用户已接受了该用户的好友请求
  @constant eEMBuddyFollowState_FollowedBoth 登录用户和小伙伴都互相在好友列表中
  */
-typedef enum : NSInteger {
+typedef NS_ENUM(NSInteger, EMBuddyFollowState) {
     eEMBuddyFollowState_NotFollowed = 0,    //双方不是好友
     eEMBuddyFollowState_Followed,           //对方已接受好友请求.
     eEMBuddyFollowState_BeFollowed,         //登录用户已接受了该用户的好友请求
     eEMBuddyFollowState_FollowedBoth        //"登录用户"和"小伙伴"都互相在好友列表中
-} EMBuddyFollowState;
+};
 
 /*!
  @class

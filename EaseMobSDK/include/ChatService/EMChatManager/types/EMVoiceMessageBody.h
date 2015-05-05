@@ -89,4 +89,13 @@
  */
 - (id)initWithChatObject:(EMChatVoice *)aChatVoice;
 
+/*!
+ @method
+ @brief 以语音属性创建语音消息体
+ @discussion 如果传入的参数有误会返回nil
+ @param bodyDict 语音属性
+ @param chatter 所属消息的chatter
+ @result 语音消息体
+ */
++ (instancetype)voiceMessageBodyFromBodyDict:(NSDictionary *)bodyDict forChatter:(NSString *)chatter;
 @end

@@ -37,16 +37,6 @@
 /*!
  @method
  @brief  从数据库获取与登陆者相关的群组
- @return 错误信息
- @discussion
-        直接从数据库中获取,并不会返回相关回调方法;
-        若希望返回相关回调方法,请使用loadAllMyGroupsFromDatabaseWithAppend2Chat:
- */
-- (NSArray *)loadAllMyGroupsFromDatabase EM_DEPRECATED_IOS(2_1_0, 2_1_2, "Use - loadAllMyGroupsFromDatabaseWithAppend2Chat:");
-
-/*!
- @method
- @brief  从数据库获取与登陆者相关的群组
  @param append2Chat  是否加到内存中。
         YES为加到内存中。加到内存中之后, 会有相应的回调被触发从而更新UI;
         NO为不加到内存中。如果不加到内存中, 则只会直接添加进DB, 不会有SDK的回调函数被触发从而去更新UI。
@@ -214,108 +204,6 @@
                            completion:(void (^)(EMGroup *group,
                                                 EMError *error))completion
                               onQueue:(dispatch_queue_t)aQueue;
-
-#pragma mark - create private group, will be abolished
-
-/*!
- @method
- @brief 创建一个私有群组
- @param subject        主题
- @param description    说明信息
- @param invitees       初始群组成员的用户名列表
- @param welcomeMessage 对初始群组成员的邀请信息
- @param pError         错误信息
- @result 创建的群组对象, 失败返回nil
- */
-- (EMGroup *)createPrivateGroupWithSubject:(NSString *)subject
-                               description:(NSString *)description
-                                  invitees:(NSArray *)invitees
-                     initialWelcomeMessage:(NSString *)welcomeMessage
-                                     error:(EMError **)pError EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -createGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:error:");
-
-/*!
- @method
- @brief 异步方法, 创建一个私有群组
- @param subject        主题
- @param description    说明信息
- @param invitees       初始群组成员的用户名列表
- @param welcomeMessage 对初始群组成员的邀请信息
- @discussion
-        函数执行完, 回调group:didCreateWithError:会被触发
- */
-- (void)asyncCreatePrivateGroupWithSubject:(NSString *)subject
-                               description:(NSString *)description
-                                  invitees:(NSArray *)invitees
-                     initialWelcomeMessage:(NSString *)welcomeMessage EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncCreateGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:");
-
-/*!
- @method
- @brief 异步方法, 创建一个私有群组
- @param subject        主题
- @param description    说明信息
- @param invitees       初始群组成员的用户名列表
- @param welcomeMessage 对初始群组成员的邀请信息
- @param completion     消息完成后的回调
- @param aQueue         回调block时的线程
- */
-- (void)asyncCreatePrivateGroupWithSubject:(NSString *)subject
-                               description:(NSString *)description
-                                  invitees:(NSArray *)invitees
-                     initialWelcomeMessage:(NSString *)welcomeMessage
-                                completion:(void (^)(EMGroup *group,
-                                                     EMError *error))completion
-                                   onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncCreateGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:completion:onQueue:");
-
-#pragma mark - create public group, will be abolished
-
-/*!
- @method
- @brief 创建一个公开群组
- @param subject        主题
- @param description    说明信息
- @param invitees       初始群组成员的用户名列表
- @param welcomeMessage 对初始群组成员的邀请信息
- @param pError         错误信息
- @result 创建的群组对象, 失败返回nil
- */
-- (EMGroup *)createPublicGroupWithSubject:(NSString *)subject
-                              description:(NSString *)description
-                                 invitees:(NSArray *)invitees
-                    initialWelcomeMessage:(NSString *)welcomeMessage
-                                    error:(EMError **)pError EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -createGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:error:");
-
-/*!
- @method
- @brief 异步方法, 创建一个公开群组
- @param subject        主题
- @param description    说明信息
- @param invitees       初始群组成员的用户名列表
- @param welcomeMessage 对初始群组成员的邀请信息
- @discussion
-        函数执行完, 回调group:didCreateWithError:会被触发
- */
-- (void)asyncCreatePublicGroupWithSubject:(NSString *)subject
-                              description:(NSString *)description
-                                 invitees:(NSArray *)invitees
-                    initialWelcomeMessage:(NSString *)welcomeMessage EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncCreateGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:");
-
-/*!
- @method
- @brief 异步方法, 创建一个公开群组
- @param subject        主题
- @param description    说明信息
- @param invitees       初始群组成员的用户名列表
- @param welcomeMessage 对初始群组成员的邀请信息
- @param completion     消息完成后的回调
- @param aQueue         回调block时的线程
- */
-- (void)asyncCreatePublicGroupWithSubject:(NSString *)subject
-                              description:(NSString *)description
-                                 invitees:(NSArray *)invitees
-                    initialWelcomeMessage:(NSString *)welcomeMessage
-                               completion:(void (^)(EMGroup *group,
-                                                    EMError *error))completion
-                                  onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncCreateGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:completion:onQueue:");
 
 #pragma mark - leave group
 
@@ -652,99 +540,6 @@
                                          EMError *error))completion
                        onQueue:(dispatch_queue_t)aQueue;
 
-#pragma mark - change group password
-
-/*!
- @method
- @brief 更改群组密码
- @param newPassword 新密码
- @param groupId  群组ID
- @param pError      错误信息
- @result 返回群组对象
- @discussion
- 此操作需要admin/owner权限
- */
-- (EMGroup *)changePassword:(NSString *)newPassword
-                   forGroup:(NSString *)groupId
-                      error:(EMError **)pError EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
-
-/*!
- @method
- @brief 异步方法, 更改群组密码
- @param newPassword 新密码
- @param groupId     群组ID
- @discussion
- 此操作需要admin/owner权限.
- 函数执行完, 回调groupDidUpdateInfo:error:会被触发
- */
-- (void)asyncChangePassword:(NSString *)newPassword
-                   forGroup:(NSString *)groupId EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
-
-/*!
- @method
- @brief 异步方法, 更改群组密码
- @param newPassword 新密码
- @param groupId     群组ID
- @param completion  消息完成后的回调
- @param aQueue      回调block时的线程
- @discussion
- 此操作需要admin/owner权限
- */
-- (void)asyncChangePassword:(NSString *)newPassword
-                   forGroup:(NSString *)groupId
-                 completion:(void (^)(EMGroup *group, EMError *error))completion
-                    onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
-
-#pragma mark - change occupants' affiliation
-
-/*!
- @method
- @brief 更改成员的权限级别
- @param newAffiliation 新的级别
- @param occupants      被更改成员的用户名列表
- @param groupId        群组ID
- @param pError         错误信息
- @result 返回群组对象
- @discussion
- 此操作需要admin/owner权限
- */
-- (EMGroup *)changeAffiliation:(EMGroupMemberRole)newAffiliation
-                  forOccupants:(NSArray *)occupants
-                       inGroup:(NSString *)groupId
-                         error:(EMError **)pError EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
-
-/*!
- @method
- @brief 异步方法, 更改成员的权限级别
- @param newAffiliation 新的级别
- @param occupants      被更改成员的用户名列表
- @param groupId        群组ID
- @discussion
- 此操作需要admin/owner权限.
- 函数执行完, 回调groupDidUpdateInfo:error:会被触发
- */
-- (void)asyncChangeAffiliation:(EMGroupMemberRole)newAffiliation
-                  forOccupants:(NSArray *)occupants
-                       inGroup:(NSString *)groupId EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
-
-/*!
- @method
- @brief 异步方法, 更改成员的权限级别
- @param newAffiliation 新的级别
- @param occupants      被更改成员的用户名列表
- @param groupId        群组ID
- @param completion     消息完成后的回调
- @param aQueue         回调block时的线程
- @discussion
- 此操作需要admin/owner权限
- */
-- (void)asyncChangeAffiliation:(EMGroupMemberRole)newAffiliation
-                  forOccupants:(NSArray *)occupants
-                       inGroup:(NSString *)groupId
-                    completion:(void (^)(EMGroup *group,
-                                         EMError *error))completion
-                       onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
-
 #pragma mark - accept invitation
 
 /*!
@@ -919,7 +714,9 @@
  @param pError              错误信息
  @return 群组
  */
-- (EMGroup *)fetchGroupInfo:(NSString *)groupId includesOccupantList:(BOOL)includesOccupantList error:(EMError **)pError;
+- (EMGroup *)fetchGroupInfo:(NSString *)groupId
+       includesOccupantList:(BOOL)includesOccupantList
+                      error:(EMError **)pError;
 
 /*!
  @method
@@ -929,7 +726,8 @@
  @discussion
  执行完成后，回调[didFetchGroupInfo:error:]
  */
-- (void)asyncFetchGroupInfo:(NSString *)groupId includesOccupantList:(BOOL)includesOccupantList;
+- (void)asyncFetchGroupInfo:(NSString *)groupId
+       includesOccupantList:(BOOL)includesOccupantList;
 
 /*!
  @method
@@ -1008,34 +806,6 @@
 - (void)asyncFetchMyGroupsListWithCompletion:(void (^)(NSArray *groups,
                                                   EMError *error))completion
                                 onQueue:(dispatch_queue_t)aQueue;
-
-#pragma mark - fetch my groups, will be abolished
-
-/*!
- @method
- @brief 获取所有私有群组
- @param pError 错误信息
- @return 获取的所有私有群组列表
- */
-- (NSArray *)fetchAllPrivateGroupsWithError:(EMError **)pError EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -fetchMyGroupsListWithError:");
-
-/*!
- @method
- @brief 异步方法, 获取所有私有群组
- @discussion
-        执行后, 回调didUpdateGroupList:error会被触发
- */
-- (void)asyncFetchAllPrivateGroups EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncMyGroupsList");
-
-/*!
- @method
- @brief 异步方法, 获取所有私有群组
- @param completion 消息完成后的回调
- @param aQueue     回调block时的线程
- */
-- (void)asyncFetchAllPrivateGroupsWithCompletion:(void (^)(NSArray *groups,
-                                                           EMError *error))completion
-                                         onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncMyGroupsListWithCompletion:onQueue:");
 
 #pragma mark - fetch all public groups
 
@@ -1226,5 +996,243 @@
                completion:(void (^)(EMGroup *group,
                                     EMError *error))completion
                   onQueue:(dispatch_queue_t)aQueue;
+
+@optional
+
+#pragma mark - EM_DEPRECATED_IOS
+
+/*!
+ @method
+ @brief  从数据库获取与登陆者相关的群组
+ @return 错误信息
+ @discussion
+ 直接从数据库中获取,并不会返回相关回调方法;
+ 若希望返回相关回调方法,请使用loadAllMyGroupsFromDatabaseWithAppend2Chat:
+ */
+- (NSArray *)loadAllMyGroupsFromDatabase EM_DEPRECATED_IOS(2_1_0, 2_1_2, "Use - loadAllMyGroupsFromDatabaseWithAppend2Chat:");
+
+#pragma mark - create private group, will be abolished
+
+/*!
+ @method
+ @brief 创建一个私有群组
+ @param subject        主题
+ @param description    说明信息
+ @param invitees       初始群组成员的用户名列表
+ @param welcomeMessage 对初始群组成员的邀请信息
+ @param pError         错误信息
+ @result 创建的群组对象, 失败返回nil
+ */
+- (EMGroup *)createPrivateGroupWithSubject:(NSString *)subject
+                               description:(NSString *)description
+                                  invitees:(NSArray *)invitees
+                     initialWelcomeMessage:(NSString *)welcomeMessage
+                                     error:(EMError **)pError EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -createGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:error:");
+
+/*!
+ @method
+ @brief 异步方法, 创建一个私有群组
+ @param subject        主题
+ @param description    说明信息
+ @param invitees       初始群组成员的用户名列表
+ @param welcomeMessage 对初始群组成员的邀请信息
+ @discussion
+ 函数执行完, 回调group:didCreateWithError:会被触发
+ */
+- (void)asyncCreatePrivateGroupWithSubject:(NSString *)subject
+                               description:(NSString *)description
+                                  invitees:(NSArray *)invitees
+                     initialWelcomeMessage:(NSString *)welcomeMessage EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncCreateGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:");
+
+/*!
+ @method
+ @brief 异步方法, 创建一个私有群组
+ @param subject        主题
+ @param description    说明信息
+ @param invitees       初始群组成员的用户名列表
+ @param welcomeMessage 对初始群组成员的邀请信息
+ @param completion     消息完成后的回调
+ @param aQueue         回调block时的线程
+ */
+- (void)asyncCreatePrivateGroupWithSubject:(NSString *)subject
+                               description:(NSString *)description
+                                  invitees:(NSArray *)invitees
+                     initialWelcomeMessage:(NSString *)welcomeMessage
+                                completion:(void (^)(EMGroup *group,
+                                                     EMError *error))completion
+                                   onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncCreateGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:completion:onQueue:");
+
+#pragma mark - create public group, will be abolished
+
+/*!
+ @method
+ @brief 创建一个公开群组
+ @param subject        主题
+ @param description    说明信息
+ @param invitees       初始群组成员的用户名列表
+ @param welcomeMessage 对初始群组成员的邀请信息
+ @param pError         错误信息
+ @result 创建的群组对象, 失败返回nil
+ */
+- (EMGroup *)createPublicGroupWithSubject:(NSString *)subject
+                              description:(NSString *)description
+                                 invitees:(NSArray *)invitees
+                    initialWelcomeMessage:(NSString *)welcomeMessage
+                                    error:(EMError **)pError EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -createGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:error:");
+
+/*!
+ @method
+ @brief 异步方法, 创建一个公开群组
+ @param subject        主题
+ @param description    说明信息
+ @param invitees       初始群组成员的用户名列表
+ @param welcomeMessage 对初始群组成员的邀请信息
+ @discussion
+ 函数执行完, 回调group:didCreateWithError:会被触发
+ */
+- (void)asyncCreatePublicGroupWithSubject:(NSString *)subject
+                              description:(NSString *)description
+                                 invitees:(NSArray *)invitees
+                    initialWelcomeMessage:(NSString *)welcomeMessage EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncCreateGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:");
+
+/*!
+ @method
+ @brief 异步方法, 创建一个公开群组
+ @param subject        主题
+ @param description    说明信息
+ @param invitees       初始群组成员的用户名列表
+ @param welcomeMessage 对初始群组成员的邀请信息
+ @param completion     消息完成后的回调
+ @param aQueue         回调block时的线程
+ */
+- (void)asyncCreatePublicGroupWithSubject:(NSString *)subject
+                              description:(NSString *)description
+                                 invitees:(NSArray *)invitees
+                    initialWelcomeMessage:(NSString *)welcomeMessage
+                               completion:(void (^)(EMGroup *group,
+                                                    EMError *error))completion
+                                  onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncCreateGroupWithSubject:description:invitees:initialWelcomeMessage:styleSetting:completion:onQueue:");
+
+#pragma mark - change group password, will be abolished
+
+/*!
+ @method
+ @brief 更改群组密码
+ @param newPassword 新密码
+ @param groupId  群组ID
+ @param pError      错误信息
+ @result 返回群组对象
+ @discussion
+ 此操作需要admin/owner权限
+ */
+- (EMGroup *)changePassword:(NSString *)newPassword
+                   forGroup:(NSString *)groupId
+                      error:(EMError **)pError EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+/*!
+ @method
+ @brief 异步方法, 更改群组密码
+ @param newPassword 新密码
+ @param groupId     群组ID
+ @discussion
+ 此操作需要admin/owner权限.
+ 函数执行完, 回调groupDidUpdateInfo:error:会被触发
+ */
+- (void)asyncChangePassword:(NSString *)newPassword
+                   forGroup:(NSString *)groupId EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+/*!
+ @method
+ @brief 异步方法, 更改群组密码
+ @param newPassword 新密码
+ @param groupId     群组ID
+ @param completion  消息完成后的回调
+ @param aQueue      回调block时的线程
+ @discussion
+ 此操作需要admin/owner权限
+ */
+- (void)asyncChangePassword:(NSString *)newPassword
+                   forGroup:(NSString *)groupId
+                 completion:(void (^)(EMGroup *group, EMError *error))completion
+                    onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+#pragma mark - change occupants' affiliation, will be abolished
+
+/*!
+ @method
+ @brief 更改成员的权限级别
+ @param newAffiliation 新的级别
+ @param occupants      被更改成员的用户名列表
+ @param groupId        群组ID
+ @param pError         错误信息
+ @result 返回群组对象
+ @discussion
+ 此操作需要admin/owner权限
+ */
+- (EMGroup *)changeAffiliation:(EMGroupMemberRole)newAffiliation
+                  forOccupants:(NSArray *)occupants
+                       inGroup:(NSString *)groupId
+                         error:(EMError **)pError EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+/*!
+ @method
+ @brief 异步方法, 更改成员的权限级别
+ @param newAffiliation 新的级别
+ @param occupants      被更改成员的用户名列表
+ @param groupId        群组ID
+ @discussion
+ 此操作需要admin/owner权限.
+ 函数执行完, 回调groupDidUpdateInfo:error:会被触发
+ */
+- (void)asyncChangeAffiliation:(EMGroupMemberRole)newAffiliation
+                  forOccupants:(NSArray *)occupants
+                       inGroup:(NSString *)groupId EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+/*!
+ @method
+ @brief 异步方法, 更改成员的权限级别
+ @param newAffiliation 新的级别
+ @param occupants      被更改成员的用户名列表
+ @param groupId        群组ID
+ @param completion     消息完成后的回调
+ @param aQueue         回调block时的线程
+ @discussion
+ 此操作需要admin/owner权限
+ */
+- (void)asyncChangeAffiliation:(EMGroupMemberRole)newAffiliation
+                  forOccupants:(NSArray *)occupants
+                       inGroup:(NSString *)groupId
+                    completion:(void (^)(EMGroup *group,
+                                         EMError *error))completion
+                       onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+#pragma mark - fetch my groups, will be abolished
+
+/*!
+ @method
+ @brief 获取所有私有群组
+ @param pError 错误信息
+ @return 获取的所有私有群组列表
+ */
+- (NSArray *)fetchAllPrivateGroupsWithError:(EMError **)pError EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -fetchMyGroupsListWithError:");
+
+/*!
+ @method
+ @brief 异步方法, 获取所有私有群组
+ @discussion
+ 执行后, 回调didUpdateGroupList:error会被触发
+ */
+- (void)asyncFetchAllPrivateGroups EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncMyGroupsList");
+
+/*!
+ @method
+ @brief 异步方法, 获取所有私有群组
+ @param completion 消息完成后的回调
+ @param aQueue     回调block时的线程
+ */
+- (void)asyncFetchAllPrivateGroupsWithCompletion:(void (^)(NSArray *groups,
+                                                           EMError *error))completion
+                                         onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncMyGroupsListWithCompletion:onQueue:");
+
 
 @end

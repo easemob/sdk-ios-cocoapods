@@ -6,6 +6,7 @@
  */
 
 #import <Foundation/Foundation.h>
+
 #import "IChatManagerBase.h"
 
 /*!
@@ -144,33 +145,6 @@
 /*!
  @method
  @brief 注销当前登录用户
- @param pError 错误信息
- @result 返回注销信息
- */
-- (NSDictionary *)logoffWithError:(EMError **)pError EM_DEPRECATED_IOS(2_0_6, 2_1_1, "Use - logoffWithUnbindDeviceToken:error:");
-
-/*!
- @method
- @brief 异步方法, 注销当前登录用户
- @discussion 在注销过程中, EMChatManagerLoginDelegate中的didLogoffWithError:回调会被触发.
- @result
- */
-- (void)asyncLogoff EM_DEPRECATED_IOS(2_0_6, 2_1_1, "Use - asyncLogoffWithUnbindDeviceToken:");
-
-/*!
- @method
- @brief 异步方法, 注销当前登录用户
- @discussion
- @param completion 回调
- @param aQueue     回调时的线程
- @result
- */
-- (void)asyncLogoffWithCompletion:(void (^)(NSDictionary *info, EMError *error))completion
-                          onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_6, 2_1_1, "Use - asyncLogoffWithUnbindDeviceToken:completion:onQueue:");
-
-/*!
- @method
- @brief 注销当前登录用户
  @discussion 当接收到【didLoginFromOtherDevice】和【didRemovedFromServer】的回调时，调用此方法，isUnbind传NO
  @param isUnbind 是否解除device token
  @param pError 错误信息
@@ -198,5 +172,36 @@
 - (void)asyncLogoffWithUnbindDeviceToken:(BOOL)isUnbind
                               completion:(void (^)(NSDictionary *info, EMError *error))completion
                                  onQueue:(dispatch_queue_t)aQueue;
+
+@optional
+
+#pragma mark - EM_DEPRECATED_IOS
+
+/*!
+ @method
+ @brief 注销当前登录用户
+ @param pError 错误信息
+ @result 返回注销信息
+ */
+- (NSDictionary *)logoffWithError:(EMError **)pError EM_DEPRECATED_IOS(2_0_6, 2_1_1, "Use - logoffWithUnbindDeviceToken:error:");
+
+/*!
+ @method
+ @brief 异步方法, 注销当前登录用户
+ @discussion 在注销过程中, EMChatManagerLoginDelegate中的didLogoffWithError:回调会被触发.
+ @result
+ */
+- (void)asyncLogoff EM_DEPRECATED_IOS(2_0_6, 2_1_1, "Use - asyncLogoffWithUnbindDeviceToken:");
+
+/*!
+ @method
+ @brief 异步方法, 注销当前登录用户
+ @discussion
+ @param completion 回调
+ @param aQueue     回调时的线程
+ @result
+ */
+- (void)asyncLogoffWithCompletion:(void (^)(NSDictionary *info, EMError *error))completion
+                          onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_6, 2_1_1, "Use - asyncLogoffWithUnbindDeviceToken:completion:onQueue:");
 
 @end

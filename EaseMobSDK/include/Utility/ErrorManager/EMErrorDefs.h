@@ -59,7 +59,7 @@
  @constant EMErrorFeatureNotImplemented         还未实现的功能
  @constant EMErrorRequestRefused                申请失效
  */
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSInteger, EMErrorType) {
     //general error
     EMErrorNotFound                 = 404,      //不存在
     EMErrorServerMaxCountExceeded   = 500,      //数量达到上限（每人最多100条离线消息，群组成员达到上线）
@@ -136,6 +136,6 @@ typedef enum : NSUInteger {
     EMErrorPermissionFailure = EMErrorServerInsufficientPrivilege,
     EMErrorIsExist = EMErrorExisted,
     
-} EMErrorType;
+};
 
 #endif

@@ -16,20 +16,7 @@
  */
 @protocol IEMChatProgressDelegate <NSObject>
 
-@required
-
-/*!
- @method
- @brief 设置进度
- @discussion 用户需实现此接口用以支持进度显示
- @param progress 值域为0到1.0的浮点数
- @param message  某一条消息的progress
- @param messageBody  某一条消息某个body的progress
- @result
- */
-- (void)setProgress:(float)progress
-         forMessage:(EMMessage *)message
-     forMessageBody:(id<IEMMessageBody>)messageBody;
+@optional
 
 /*!
  @method
@@ -50,5 +37,20 @@
  @result
  */
 - (void)setProgress:(float)progress __attribute__((deprecated("")));
+
+@required
+
+/*!
+ @method
+ @brief 设置进度
+ @discussion 用户需实现此接口用以支持进度显示
+ @param progress 值域为0到1.0的浮点数
+ @param message  某一条消息的progress
+ @param messageBody  某一条消息某个body的progress
+ @result
+ */
+- (void)setProgress:(float)progress
+         forMessage:(EMMessage *)message
+     forMessageBody:(id<IEMMessageBody>)messageBody;
 
 @end

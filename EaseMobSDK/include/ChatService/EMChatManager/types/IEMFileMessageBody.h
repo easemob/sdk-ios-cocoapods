@@ -8,6 +8,36 @@
 #import <Foundation/Foundation.h>
 #import "IEMMessageBody.h"
 
+//消息体类型键
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeyType;
+
+//附件属性键
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeyUrl;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeySecret;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeyFileName;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeyFileLength;
+
+//图片大小属性键
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeySize;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeySizeWidth;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeySizeHeight;
+
+//缩略图属性键
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeyThumb;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeyThumbSecret;
+
+//音视频时长
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrKeyDuration;
+
+//消息体类型
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrTypeTxt;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrTypeImag;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrTypeAudio;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrTypeLoc;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrTypeVideo;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrTypeFile;
+FOUNDATION_EXTERN NSString * const EMMessageBodyAttrTypeCmd;
+
 /*!
  @enum
  @brief 附件下载的状态
@@ -16,12 +46,12 @@
  @constant EMAttachmentDownloadFailure   下载失败
  @constant EMAttachmentNotStarted        未下载
  */
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, EMAttachmentDownloadStatus) {
     EMAttachmentDownloading,
     EMAttachmentDownloadSuccessed,
     EMAttachmentDownloadFailure,
     EMAttachmentNotStarted,
-} EMAttachmentDownloadStatus;
+} ;
 
 
 /*!

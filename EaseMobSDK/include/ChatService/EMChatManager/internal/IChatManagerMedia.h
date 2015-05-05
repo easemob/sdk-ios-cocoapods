@@ -87,6 +87,7 @@
                                 onQueue:(dispatch_queue_t)aQueue;
 
 #pragma mark - is playing audio
+
 /*!
  @method
  @brief 判断是否正在播放该聊天声音

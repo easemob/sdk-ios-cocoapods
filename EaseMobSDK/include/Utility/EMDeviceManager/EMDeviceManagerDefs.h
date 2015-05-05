@@ -7,15 +7,15 @@
 #ifndef EaseMobClientSDK_DeviceManagerDefs_h
 #define EaseMobClientSDK_DeviceManagerDefs_h
 
-typedef enum {
+typedef NS_ENUM(NSInteger, EMAudioOutputDevice) {
     // output to earphone
     eAudioOutputDevice_earphone = 0,
     
     // output to speaker
     eAudioOutputDevice_speaker
-}EMAudioOutputDevice;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, EMAudioPlaybackMode) {
     // play sound, stop in background&screen lock, mixed with others
     eAudioPlayMode_Simple = 0,
     
@@ -30,6 +30,6 @@ typedef enum {
     
     // play & record
     eAudioPlayMode_PlayAndRecord
-}EMAudioPlaybackMode;
+};
 
 #endif

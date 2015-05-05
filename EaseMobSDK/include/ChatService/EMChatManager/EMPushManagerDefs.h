@@ -21,10 +21,10 @@
  @constant ePushNotificationDisplayStyle_simpleBanner   简单显示一条"您有一条新消息"的文本
  @constant ePushNotificationDisplayStyle_messageSummary 会显示一条具有消息内容的推送消息
  */
-typedef enum {
+typedef NS_ENUM(NSInteger, EMPushNotificationDisplayStyle) {
     ePushNotificationDisplayStyle_simpleBanner = 0,
     ePushNotificationDisplayStyle_messageSummary = 1,
-}EMPushNotificationDisplayStyle;
+};
 
 /*!
  @enum
@@ -33,10 +33,10 @@ typedef enum {
  @constant ePushNotificationNoDisturbStatusCustom  自定义时间段免打扰
  @constant ePushNotificationNoDisturbStatusClose   关闭免打扰模式
  */
-typedef enum {
+typedef NS_ENUM(NSInteger, EMPushNotificationNoDisturbStatus) {
     ePushNotificationNoDisturbStatusDay = 0,
     ePushNotificationNoDisturbStatusCustom = 1,
     ePushNotificationNoDisturbStatusClose = 2,
-}EMPushNotificationNoDisturbStatus;
+};
 
 #endif

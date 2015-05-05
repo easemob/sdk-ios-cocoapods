@@ -125,4 +125,13 @@
  */
 - (id)initWithChatObject:(EMChatVideo *)aChatVideo;
 
+/*!
+ @method
+ @brief 以视频属性创建视频消息体
+ @discussion 如果传入的参数有误会返回nil
+ @param bodyDict 视频属性
+ @param chatter 所属消息的chatter
+ @result 视频消息体
+ */
++ (instancetype)videoMessageBodyFromBodyDict:(NSDictionary *)bodyDict forChatter:(NSString *)chatter;
 @end

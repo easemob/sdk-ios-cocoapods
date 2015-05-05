@@ -6,6 +6,7 @@
  */
 
 #import <Foundation/Foundation.h>
+
 #import "IChatManagerBase.h"
 
 @class EMPushNotificationOptions;
@@ -30,7 +31,6 @@
  @property
  @brief     已屏蔽接收推送消息的群ID列表
  */
-@property (nonatomic, strong, readonly) NSArray *ignoredGroupList EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Use - ignoredGroupIds");
 @property (nonatomic, strong, readonly) NSArray *ignoredGroupIds;
 
 /*!
@@ -107,5 +107,15 @@
                               completion:(void (^)(NSArray *ignoreGroupsList,
                                                    EMError *error))completion
                                  onQueue:(dispatch_queue_t)aQueue;
+
+@optional
+
+#pragma mark - EM_DEPRECATED_IOS
+
+/*!
+ @property
+ @brief     已屏蔽接收推送消息的群ID列表
+ */
+@property (nonatomic, strong, readonly) NSArray *ignoredGroupList EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Use - ignoredGroupIds");
 
 @end

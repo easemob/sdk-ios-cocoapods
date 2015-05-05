@@ -15,11 +15,11 @@
  @constant eGroupLeaveReason_UserLeave 用户主动退出该群组
  @constant eGroupLeaveReason_Destroyed 该群组被别人销毁
  */
-typedef enum {
+typedef NS_ENUM(NSInteger, EMGroupLeaveReason) {
     eGroupLeaveReason_BeRemoved = 1,
     eGroupLeaveReason_UserLeave,
     eGroupLeaveReason_Destroyed
-}EMGroupLeaveReason;
+};
 
 /*!
  @enum
@@ -28,11 +28,11 @@ typedef enum {
  @constant eGroupMemberRole_Admin  群组管理员
  @constant eGroupMemberRole_Owner  群组创建者
  */
-typedef enum {
+typedef NS_ENUM(NSInteger, EMGroupMemberRole) {
     eGroupMemberRole_Member = 0,
     eGroupMemberRole_Admin,
     eGroupMemberRole_Owner,
-} EMGroupMemberRole;
+} ;
 
 
 #endif

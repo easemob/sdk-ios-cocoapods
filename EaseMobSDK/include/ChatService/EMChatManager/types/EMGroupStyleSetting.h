@@ -20,14 +20,14 @@
         eGroupStyle_Private：私有群组，只允许群组成员邀请人进入
         eGroupStyle_Public： 公有群组，允许非群组成员加入
  */
-typedef enum{
+typedef NS_ENUM(NSInteger, EMGroupStyle){
     eGroupStyle_PrivateOnlyOwnerInvite = 0, 
     eGroupStyle_PrivateMemberCanInvite,
     eGroupStyle_PublicJoinNeedApproval,
     eGroupStyle_PublicOpenJoin,
     eGroupStyle_PublicAnonymous,
     eGroupStyle_Default = eGroupStyle_PrivateOnlyOwnerInvite,
-}EMGroupStyle;
+};
 
 #define KSDK_GROUP_MINUSERSCOUNT 3
 #define KSDK_GROUP_MAXUSERSCOUNT 500

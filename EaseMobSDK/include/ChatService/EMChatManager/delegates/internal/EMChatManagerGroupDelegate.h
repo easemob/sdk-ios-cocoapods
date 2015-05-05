@@ -37,7 +37,9 @@
  @discussion
         离开的原因包含主动退出, 被别人请出, 和销毁群组三种情况
  */
-- (void)group:(EMGroup *)group didLeave:(EMGroupLeaveReason)reason error:(EMError *)error;
+- (void)group:(EMGroup *)group
+     didLeave:(EMGroupLeaveReason)reason
+        error:(EMError *)error;
 
 /*!
  @method
@@ -47,7 +49,8 @@
  @discussion
         当添加/移除/更改角色/更改主题/更改群组信息之后,都会触发此回调
  */
-- (void)groupDidUpdateInfo:(EMGroup *)group error:(EMError *)error;
+- (void)groupDidUpdateInfo:(EMGroup *)group
+                     error:(EMError *)error;
 
 /*!
  @method
@@ -204,7 +207,9 @@
  @param username        申请加入的人的username
  @param error           错误信息
  */
-- (void)didAcceptApplyJoinGroup:(NSString *)groupId username:(NSString *)username error:(EMError *)error;
+- (void)didAcceptApplyJoinGroup:(NSString *)groupId
+                       username:(NSString *)username
+                          error:(EMError *)error;
 
 /*!
  @method

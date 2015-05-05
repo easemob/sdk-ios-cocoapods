@@ -23,7 +23,7 @@
  @constant eMessageBodyType_File 文件类型
  @constant eMessageBodyType_Command 命令类型
  */
-typedef enum {
+typedef NS_ENUM(NSInteger, MessageBodyType) {
     eMessageBodyType_Text = 1,
     eMessageBodyType_Image,
     eMessageBodyType_Video,
@@ -31,7 +31,7 @@ typedef enum {
     eMessageBodyType_Voice,
     eMessageBodyType_File,
     eMessageBodyType_Command
-}MessageBodyType;
+};
 
 /*!
  @enum
@@ -41,21 +41,21 @@ typedef enum {
  @constant eMessageDeliveryState_Delivered 已发送, 成功
  @constant eMessageDeliveryState_Failure 已发送, 失败
  */
-typedef enum {
+typedef NS_ENUM(NSInteger, MessageDeliveryState) {
     eMessageDeliveryState_Pending = 0, 
     eMessageDeliveryState_Delivering, 
     eMessageDeliveryState_Delivered, 
     eMessageDeliveryState_Failure
-}MessageDeliveryState;
+};
 
 /*!
  @brief 消息回执类型
  @constant eReceiptTypeRequest   回执请求
  @constant eReceiptTypeResponse  回执响应
  */
-typedef enum{
+typedef NS_ENUM(NSInteger, EMReceiptType){
     eReceiptTypeRequest  = 0,
     eReceiptTypeResponse,
-}EMReceiptType;
+};
 
 #endif

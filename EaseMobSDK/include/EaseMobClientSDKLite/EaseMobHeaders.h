@@ -18,6 +18,7 @@
 #define kSDKServerChatDomain @"EASEMOB_CHAT_DOMAIN"
 #define kSDKConfigEnableConsoleLogger @"EASEMOB_CONFIG_ENABLECONSOLELOGGER"
 #define kSDKConfigUseHttps @"EASEMOB_CONFIG_USEHTTPS"
+#define kSDKConfigEnableIPAccess @"EASEMOB_ENABLE_IP_ACCESS"
 
 //defs headers
 #import "EMChatManagerDefs.h"
