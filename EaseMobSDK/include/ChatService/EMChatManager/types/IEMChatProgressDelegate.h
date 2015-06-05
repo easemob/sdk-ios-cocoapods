@@ -36,7 +36,7 @@
  @param progress 值域为0到1.0的浮点数
  @result
  */
-- (void)setProgress:(float)progress __attribute__((deprecated("")));
+- (void)setProgress:(float)progress;
 
 @required
 

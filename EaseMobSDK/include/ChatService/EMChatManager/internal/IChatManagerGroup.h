@@ -13,6 +13,7 @@
 @class EMGroup;
 @class EMError;
 @class EMGroupStyleSetting;
+@class EMCursorResult;
 
 /*!
  @protocol
@@ -834,6 +835,31 @@
 - (void)asyncFetchAllPublicGroupsWithCompletion:(void (^)(NSArray *groups,
                                                           EMError *error))completion
                                         onQueue:(dispatch_queue_t)aQueue;
+
+/*!
+ @method
+ @brief 获取指定范围内的公开群
+ @param cursor   获取公开群的cursor，首次调用传空即可
+ @param pageSize 期望结果的数量, 如果 < 0 则一次返回所有结果
+ @param pError   出错信息
+ @return         获取的公开群结果
+ @discussion
+ 这是一个阻塞方法，用户应当在一个独立线程中执行此方法，用户可以连续调用此方法以获得所有的公开群
+ */
+- (EMCursorResult *)fetchPublicGroupsFromServerWithCursor:(NSString *)cursor
+                                                 pageSize:(NSInteger)pageSize
+                                                 andError:(EMError **)pError;
+
+/*!
+ @method
+ @brief 异步方法, 获取指定范围的公开群
+ @param cursor      获取公开群的cursor，首次调用传空即可
+ @param pageSize    期望结果的数量, 如果 < 0 则一次返回所有结果
+ @param completion  完成回调，回调会在主线程调用
+ */
+- (void)asyncFetchPublicGroupsFromServerWithCursor:(NSString *)cursor
+                                     pageSize:(NSInteger)pageSize
+                                andCompletion:(void (^)(EMCursorResult *result, EMError *error))completion;
 
 #pragma mark - join public group
 

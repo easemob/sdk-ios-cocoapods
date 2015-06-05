@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IChatManagerBase.h"
+#import "EMChatManagerDefs.h"
 
 @class EMConversation;
 @class EMMessage;
@@ -34,15 +35,15 @@
  @method
  @brief 获取某个用户的会话
  @discussion
-        此方法获取会话的顺序如下:
-            1. 查找内存会话列表中的会话;
-            2. 如果没找到, 试图从数据库中查找此条会话;
-            3. 如果仍没找到, 创建一个新的会话, 加到会话列表中, 并触发didUpdateConversationList:回调
- @param chatter 需要获取会话对象的用户名, 对于群组, 则是群组ID
+ 此方法获取会话的顺序如下:
+ 1. 查找内存会话列表中的会话;
+ 2. 如果没找到, 试图从数据库中查找此条会话;
+ 3. 如果仍没找到, 创建一个新的会话, 加到会话列表中, 并触发didUpdateConversationList:回调
+ @param chatter 需要获取会话对象的用户名, 对于群组是群组ID，聊天室则是聊天室ID
  @result 会话对象
  */
 - (EMConversation *)conversationForChatter:(NSString *)chatter
-                                   isGroup:(BOOL)isGroup;
+                          conversationType:(EMConversationType)type;
 
 /*!
  @method
@@ -131,11 +132,11 @@
 
 /*!
  @method
- @brief 获取总的未读消息数量
+ @brief 从数据库获取所有未读消息数量
  @discussion
  @result 未读消息数量
  */
-- (NSUInteger)totalUnreadMessagesCount;
+- (NSUInteger)loadTotalUnreadMessagesCountFromDatabase;
 
 /*!
  @method
@@ -224,6 +225,20 @@
 
 /*!
  @method
+ @brief 获取某个用户的会话
+ @discussion
+ 此方法获取会话的顺序如下:
+ 1. 查找内存会话列表中的会话;
+ 2. 如果没找到, 试图从数据库中查找此条会话;
+ 3. 如果仍没找到, 创建一个新的会话, 加到会话列表中, 并触发didUpdateConversationList:回调
+ @param chatter 需要获取会话对象的用户名, 对于群组, 则是群组ID
+ @result 会话对象
+ */
+- (EMConversation *)conversationForChatter:(NSString *)chatter
+                                   isGroup:(BOOL)isGroup EM_DEPRECATED_IOS(2_0_0, 2_1_6, "Use - conversationForChatter:conversationType");
+
+/*!
+ @method
  @brief 获取当前登录用户的会话列表
  @discussion
  直接从数据库中删除,并不会返回相关回调方法;
@@ -285,6 +300,14 @@
  @result 当前登录用户所有包含未读消息的会话对象的个数
  */
 - (NSUInteger)unreadConversationsCount EM_DEPRECATED_IOS(2_0_0, 2_0_8, "不再提供该属性");
+
+/*!
+ @method
+ @brief 获取所有conversation的未读消息数量
+ @discussion
+ @result 未读消息数量
+ */
+- (NSUInteger)totalUnreadMessagesCount EM_DEPRECATED_IOS(2_1_0, 2_1_6, "Use - loadTotalUnreadMessagesCountFromDatabase");
 
 /*!
  @method

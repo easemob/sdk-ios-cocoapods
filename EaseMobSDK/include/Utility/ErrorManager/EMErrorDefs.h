@@ -26,7 +26,7 @@
  @constant EMErrorServerInsufficientPrivilege   所执行操作的权限不够(Ex. 非管理员删除群成员时, 会返回的error)
  @constant EMErrorServerOccupantNotExist        操作群组时, 人员不在此群组(Ex. remove群组成员时, 会返回的error)
  @constant EMErrorServerTooManyOperations       短时间内多次发起同一异步请求(Ex. 频繁刷新群组列表, 会返回的error)
- @constant EMErrorAttachmentNotFound            本地未找着附件
+ @constant EMErrorAttachmentNotFound            未找着附件
  @constant EMErrorAttachmentDamaged             文件被损坏或被修改了
  @constant EMErrorAttachmentUploadFailure       文件上传失败
  @constant EMErrorFileTypeConvertionFailure     文件格式转换失败
@@ -58,6 +58,9 @@
  @constant EMErrorFailure                       失败
  @constant EMErrorFeatureNotImplemented         还未实现的功能
  @constant EMErrorRequestRefused                申请失效
+ @constant EMErrorChatroomInvalidID_NULL        无效的聊天室ID(为空)
+ @constant EMErrorChatroomJoined                已加入聊天室
+ @constant EMErrorChatroomNotJoined             没有加入聊天室
  */
 typedef NS_ENUM(NSInteger, EMErrorType) {
     //general error
@@ -79,7 +82,7 @@ typedef NS_ENUM(NSInteger, EMErrorType) {
     EMErrorServerTooManyOperations,             //短时间内多次发起同一操作(Ex. 频繁刷新群组列表, 会返回的error)
     
     //file error
-    EMErrorAttachmentNotFound,                  //本地未找着附件
+    EMErrorAttachmentNotFound,                  //未找着附件
     EMErrorAttachmentDamaged,                   //文件被损坏或被修改了
     EMErrorAttachmentUploadFailure,             //文件上传失败
     EMErrorFileTypeConvertionFailure,           //文件格式转换失败
@@ -127,6 +130,11 @@ typedef NS_ENUM(NSInteger, EMErrorType) {
     EMErrorFeatureNotImplemented,               //还未实现的功能
     
     EMErrorRequestRefused,                      //申请失效
+
+    //chatroom error
+    EMErrorChatroomInvalidID_NULL,              //无效的聊天室ID(为空)
+    EMErrorChatroomJoined,                      //已加入聊天室
+    EMErrorChatroomNotJoined,                   //没有加入聊天室
     
     EMErrorReachLimit = EMErrorServerMaxCountExceeded,
     EMErrorOutOfRateLimited = EMErrorServerMaxCountExceeded,

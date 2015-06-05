@@ -15,7 +15,7 @@
  @class
  @brief 聊天的会话对象
  */
-@interface EMConversation : NSObject
+@interface EMConversation : NSObject<NSCoding>
 
 /*!
  @property
@@ -27,7 +27,7 @@
  @property
  @brief 是否是群聊
  */
-@property (nonatomic, readonly) BOOL isGroup;
+@property (nonatomic, readonly) BOOL isGroup EM_DEPRECATED_IOS(2_0_0, 2_1_6, "Use - conversationType");
 
 /*!
  @property
@@ -52,6 +52,12 @@
  @brief 是否接收关于此会话的消息
  */
 @property (nonatomic, readwrite) BOOL enableReceiveMessage EM_DEPRECATED_IOS(2_0_0, 2_1_1, "Delete");
+
+/*!
+ @property
+ @brief 会话类型
+ */
+@property (nonatomic, readonly) EMConversationType conversationType;
 
 #pragma mark - message
 
@@ -130,6 +136,18 @@
  @result 加载的消息列表
  */
 - (NSArray *)loadNumbersOfMessages:(NSUInteger)aCount before:(long long)timestamp;
+
+
+/*!
+ @method
+ @brief 根据消息id加载它之前的指定条数消息
+ @param aCount 要加载的消息条数
+ @param messageId 消息id，如果传nil就是取最后一条消息
+ @discussion
+    加载后的消息按照升序排列（不包含传入的messageId对应的消息）;
+ @result 加载的消息列表
+ */
+- (NSArray *)loadNumbersOfMessages:(NSUInteger)aCount withMessageId:(NSString *)messageId;
 
 /*!
  @method

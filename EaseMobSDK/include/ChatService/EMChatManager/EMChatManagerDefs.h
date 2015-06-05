@@ -58,4 +58,72 @@ typedef NS_ENUM(NSInteger, EMReceiptType){
     eReceiptTypeResponse,
 };
 
+/*
+@brief 会话类型
+@constant eConversationTypeChat            单聊会话
+@constant eConversationTypeGroupChat       群聊会话
+@constant eConversationTypeChatRoom        聊天室会话
+*/
+typedef NS_ENUM(NSInteger, EMConversationType){
+    eConversationTypeChat,
+    eConversationTypeGroupChat,
+    eConversationTypeChatRoom
+};
+
+/*!
+ @brief 消息类型
+ @constant eMessageTypeChat            单聊消息
+ @constant eMessageTypeGroupChat       群聊消息
+ @constant eMessageTypeChatRoom        聊天室消息
+ */
+typedef NS_ENUM(NSInteger, EMMessageType){
+    eMessageTypeChat,
+    eMessageTypeGroupChat,
+    eMessageTypeChatRoom
+};
+
+/*!
+ @enum
+ @brief 备份消息状态
+ @constant eBackupMessagesStatusNone        初始状态
+ @constant eBackupMessagesStatusFormatting  格式化消息
+ @constant eBackupMessagesStatusCompressing 压缩消息
+ @constant eBackupMessagesStatusUploading   上传消息
+ @constant eBackupMessagesStatusUpdating    更新云端备份
+ @constant eBackupMessagesStatusCancelled   取消备份
+ @constant eBackupMessagesStatusFailed      备份失败
+ @constant eBackupMessagesStatusSucceeded   备份成功
+ */
+typedef NS_ENUM(NSInteger, EMBackupMessagesStatus) {
+    eBackupMessagesStatusNone = 0,
+    eBackupMessagesStatusFormatting,
+    eBackupMessagesStatusCompressing,
+    eBackupMessagesStatusUploading,
+    eBackupMessagesStatusUpdating,
+    eBackupMessagesStatusCancelled,
+    eBackupMessagesStatusFailed,
+    eBackupMessagesStatusSucceeded,
+};
+
+/*!
+ @enum
+ @brief 恢复备份消息状态
+ @constant eRestoreBackupStatusNone             初始状态
+ @constant eRestoreBackupStatusDownload         备份下载
+ @constant eRestoreBackupStatusDecompressing    解压缩
+ @constant eRestoreBackupStatusImporting        导入
+ @constant eRestoreBackupStatusCancelled        取消恢复
+ @constant eRestoreBackupStatusFailed           恢复备份失败
+ @constant eRestoreBackupStatusSucceeded         恢复备份成功
+ */
+typedef NS_ENUM(NSInteger, EMRestoreBackupStatus) {
+    eRestoreBackupStatusNone = 0,
+    eRestoreBackupStatusDownloading,
+    eRestoreBackupStatusDecompressing,
+    eRestoreBackupStatusImporting,
+    eRestoreBackupStatusCancelled,
+    eRestoreBackupStatusFailed,
+    eRestoreBackupStatusSucceeded,
+};
+
 #endif

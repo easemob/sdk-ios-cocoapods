@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'EaseMobSDK'
-  spec.version      = '2.1.6'
+  spec.version      = '2.1.7'
   spec.license      = 'MIT'
   spec.summary      = 'An Objective-C client for IM service'
   spec.homepage     = 'https://github.com/easemob/sdk-ios-cocoapods'
@@ -14,7 +14,7 @@ Pod::Spec.new do |spec|
   spec.resource     = 'EaseMobSDK/resources/EaseMob.bundle'
     spec.vendored_libraries = ['EaseMobSDK/lib/libEaseMobClientSDKLite_armv7.a',
                              'EaseMobSDK/lib/libEaseMobClientSDKLite_armv7s.a',
-                             'EaseMobSDK/lib/libEaseMobClientSDKLite_armv64.a',
+                             'EaseMobSDK/lib/libEaseMobClientSDKLite_arm64.a',
                              'EaseMobSDK/lib/libEaseMobClientSDKLite_i386.a',
                              'EaseMobSDK/lib/libEaseMobClientSDKLite_x86_64.a']
   spec.xcconfig     = {'OTHER_LDFLAGS' => '-ObjC'}

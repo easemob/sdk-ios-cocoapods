@@ -62,4 +62,22 @@
  */
 @property (nonatomic) NSUInteger noDisturbingEndM;
 
+/*!
+ @property
+ @brief  备份消息的大小 bytes
+ */
+@property (nonatomic) NSUInteger backupDataSize;
+
+/*!
+ @property
+ @brief  备份消息的时间戳
+ */
+@property (nonatomic) NSTimeInterval backupTimeInterval;
+
+/*!
+ @property
+ @brief  备份消息的下载地址,以“,”组合成字符串
+ */
+@property (strong, nonatomic) NSString *backupPaths;
+
 @end

@@ -8,12 +8,12 @@
 #import <Foundation/Foundation.h>
 #import "EMChatManagerChatDelegate.h"
 #import "EMChatManagerEncryptionDelegate.h"
-#import "EMChatManagerMediaDelegate.h"
 #import "EMChatManagerLoginDelegate.h"
 #import "EMChatManagerBuddyDelegate.h"
 #import "EMChatManagerUtilDelegate.h"
 #import "EMChatManagerGroupDelegate.h"
 #import "EMChatManagerPushNotificationDelegate.h"
+#import "EMChatManagerChatroomDelegate.h"
 
 /*!
  @protocol
@@ -23,11 +23,11 @@
 @protocol EMChatManagerDelegate <EMChatManagerChatDelegate,
                                 EMChatManagerLoginDelegate, 
                                 EMChatManagerEncryptionDelegate,
-                                EMChatManagerMediaDelegate,
                                 EMChatManagerBuddyDelegate,
                                 EMChatManagerUtilDelegate,
                                 EMChatManagerGroupDelegate,
-                                EMChatManagerPushNotificationDelegate>
+                                EMChatManagerPushNotificationDelegate,
+                                EMChatManagerChatroomDelegate>
 
 @optional
 
