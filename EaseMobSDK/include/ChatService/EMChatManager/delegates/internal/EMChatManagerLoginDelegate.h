@@ -75,6 +75,22 @@
 
 /*!
  @method
+ @brief 服务器地址改变
+ @discussion
+ @result
+ */
+- (void)didServersChanged;
+
+/*!
+ @method
+ @brief appkey改变
+ @discussion
+ @result
+ */
+- (void)didAppkeyChanged;
+
+/*!
+ @method
  @brief 当前登陆用户掉线重连后发生的通知回调
  @discussion
  @result

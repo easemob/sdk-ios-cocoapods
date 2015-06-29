@@ -64,6 +64,18 @@
 
 /*!
  @property
+ @brief  备份消息的类型（iOS or Android）
+ */
+@property (strong, nonatomic) NSString *backupType;
+
+/*!
+ @property
+ @brief  备份消息的版本
+ */
+@property (strong, nonatomic) NSString *backupVersion;
+
+/*!
+ @property
  @brief  备份消息的大小 bytes
  */
 @property (nonatomic) NSUInteger backupDataSize;

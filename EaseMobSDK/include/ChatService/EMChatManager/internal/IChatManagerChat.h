@@ -193,19 +193,6 @@
                                              EMError *error))completion
                            onQueue:(dispatch_queue_t)aCompletionQueue;
 
-#pragma mark - Backup
-
-- (void)asyncBackupMessagesWithProgress:(id<IEMChatProgressDelegate>)progress
-                       statusCompletion:(void (^)(EMBackupMessagesStatus status, EMError *error))statusCompletion;
-
-- (void)cancelBackupMessages;
-
-#pragma mark - Restore
-
-- (void)asyncRestoreBackupsWithProgress:(id<IEMChatProgressDelegate>)progress
-                       statusCompletion:(void (^)(EMRestoreBackupStatus status, EMError *error))statusCompletion;
-- (void)cancelRestoreBackups;
-
 @optional
 
 #pragma mark - EM_DEPRECATED_IOS

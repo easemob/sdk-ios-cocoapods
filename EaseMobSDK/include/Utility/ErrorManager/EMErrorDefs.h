@@ -24,15 +24,12 @@
  @constant EMErrorServerAPNSRegistrationFailure APNS注册失败 (Ex. 登录时, APNS注册失败会返回的error)
  @constant EMErrorServerDuplicatedAccount       注册失败(Ex. 注册时, 如果用户存在, 会返回的error)
  @constant EMErrorServerInsufficientPrivilege   所执行操作的权限不够(Ex. 非管理员删除群成员时, 会返回的error)
- @constant EMErrorServerOccupantNotExist        操作群组时, 人员不在此群组(Ex. remove群组成员时, 会返回的error)
  @constant EMErrorServerTooManyOperations       短时间内多次发起同一异步请求(Ex. 频繁刷新群组列表, 会返回的error)
  @constant EMErrorAttachmentNotFound            未找着附件
- @constant EMErrorAttachmentDamaged             文件被损坏或被修改了
  @constant EMErrorAttachmentUploadFailure       文件上传失败
- @constant EMErrorFileTypeConvertionFailure     文件格式转换失败
- @constant EMErrorFileTypeNotSupported          不支持的文件格式
  @constant EMErrorIllegalURI                    URL非法(内部使用)
  @constant EMErrorMessageInvalid_NULL           无效的消息(为空)
+ @constant EMErrorMessageContainSensitiveWords  消息中包含敏感词
  @constant EMErrorGroupInvalidID_NULL           无效的群组ID(为空)
  @constant EMErrorGroupJoined                   已加入群组
  @constant EMErrorGroupJoinNeedRequired         加入群组需要申请
@@ -43,15 +40,15 @@
  @constant EMErrorInvalidUsername               无效的username
  @constant EMErrorInvalidUsername_NULL          无效的username(用户名为空)
  @constant EMErrorInvalidUsername_Chinese       无效的用户名(用户名不能是中文)
- @constant EMErrorAudioRecordStoping            调用开始录音方法时，上一个录音正在stoping
- @constant EMErrorAudioRecordDurationTooShort   录音时间过短
- @constant EMErrorAudioRecordNotStarted         录音没有开始
- @constant EMErrorPushNotificationInvalidOption 无效的消息推送设置
- @constant EMErrorRemoveBuddyFromRosterFailure  删除好友失败
- @constant EMErrorAddBuddyToRosterFailure       添加好友失败
+ @constant EMErrorInvalidPassword_NULL,         无效的密码(密码为空)
+ @constant EMErrorInvalidPassword_Chinese,      无效的密码(密码是中文)
+ @constant EMErrorApnsInvalidOption             无效的消息推送设置
  @constant EMErrorHasFetchedBuddyList           获取好友列表成功后, 再次发起好友列表
- @constant EMErrorCallChatterOffline,           对方不在线
- @constant EMErrorCallInvalidSessionId,         无效的通话Id
+ @constant EMErrorBlockBuddyFailure,            将好友加入黑名单失败
+ @constant EMErrorUnblockBuddyFailure,          将好友从黑名单移出失败
+ @constant EMErrorCallRemoteOffline,            对方不在线
+ @constant EMErrorCallInvalidId,                无效的通话Id
+ @constant EMErrorCallConnectFailure,           通话连接失败
  @constant EMErrorExisted,                      已存在
  @constant EMErrorInitFailure                   初始化失败
  @constant EMErrorNetworkNotConnected,          网络未连接
@@ -78,20 +75,18 @@ typedef NS_ENUM(NSInteger, EMErrorType) {
     EMErrorServerAPNSRegistrationFailure,       //APNS注册失败 (Ex. 登录时, APNS注册失败会返回的error)
     EMErrorServerDuplicatedAccount,             //注册失败(Ex. 注册时, 如果用户存在, 会返回的error)
     EMErrorServerInsufficientPrivilege,         //所执行操作的权限不够(Ex. 非管理员删除群成员时, 会返回的error)
-    EMErrorServerOccupantNotExist,              //操作群组时, 人员不在此群组(Ex. remove群组成员时, 会返回的error)
     EMErrorServerTooManyOperations,             //短时间内多次发起同一操作(Ex. 频繁刷新群组列表, 会返回的error)
     
     //file error
     EMErrorAttachmentNotFound,                  //未找着附件
-    EMErrorAttachmentDamaged,                   //文件被损坏或被修改了
     EMErrorAttachmentUploadFailure,             //文件上传失败
-    EMErrorFileTypeConvertionFailure,           //文件格式转换失败
-    EMErrorFileTypeNotSupported,                //不支持的文件格式
     
+    //url error
     EMErrorIllegalURI,                          //URL非法(内部使用)
     
     //message error
     EMErrorMessageInvalid_NULL,                 //无效的消息(为空)
+    EMErrorMessageContainSensitiveWords,        //消息中包含敏感词
     
     //group error
     EMErrorGroupInvalidID_NULL,                 //无效的群组ID(为空)
@@ -106,29 +101,27 @@ typedef NS_ENUM(NSInteger, EMErrorType) {
     EMErrorInvalidUsername,                     // 无效的username
     EMErrorInvalidUsername_NULL,                // 无效的用户名(用户名为空)
     EMErrorInvalidUsername_Chinese,             // 无效的用户名(用户名是中文)
+    EMErrorInvalidPassword_NULL,                // 无效的密码(密码为空)
+    EMErrorInvalidPassword_Chinese,             // 无效的密码(密码是中文)
     
-    //play or record audio error
-    EMErrorAudioRecordStoping,                  //调用开始录音方法时，上一个录音正在stoping
-    EMErrorAudioRecordDurationTooShort,         //录音时间过短
-    EMErrorAudioRecordNotStarted,               //录音没有开始
+    //apns error
+    EMErrorApnsInvalidOption,                   //无效的消息推送设置
     
-    //push error
-    EMErrorPushNotificationInvalidOption,       //无效的消息推送设置
-    
-    EMErrorRemoveBuddyFromRosterFailure,        //删除好友失败
-    EMErrorAddBuddyToRosterFailure,             //添加好友失败
+    //buddy
     EMErrorHasFetchedBuddyList,                 //获取好友列表成功后, 再次发起好友列表请求时返回的errorType
+    EMErrorBlockBuddyFailure,                   //将好友加入黑名单失败
+    EMErrorUnblockBuddyFailure,                 //将好友从黑名单移出失败
     
     //call error
-    EMErrorCallChatterOffline,                  //对方不在线
-    EMErrorCallInvalidSessionId,                //无效的通话Id
+    EMErrorCallRemoteOffline,                   //对方不在线
+    EMErrorCallInvalidId,                       //无效的通话Id
+    EMErrorCallConnectFailure,                  //通话连接失败
     
     EMErrorExisted,                             //已存在
     EMErrorInitFailure,                         //初始化失败
     EMErrorNetworkNotConnected,                 //网络未连接
     EMErrorFailure,                             //失败
     EMErrorFeatureNotImplemented,               //还未实现的功能
-    
     EMErrorRequestRefused,                      //申请失效
 
     //chatroom error
@@ -143,7 +136,8 @@ typedef NS_ENUM(NSInteger, EMErrorType) {
     EMErrorTooManyLogoffRequest = EMErrorServerTooManyOperations,
     EMErrorPermissionFailure = EMErrorServerInsufficientPrivilege,
     EMErrorIsExist = EMErrorExisted,
-    
+    EMErrorPushNotificationInvalidOption = EMErrorApnsInvalidOption,
+    EMErrorCallChatterOffline = EMErrorCallRemoteOffline,
 };
 
 #endif

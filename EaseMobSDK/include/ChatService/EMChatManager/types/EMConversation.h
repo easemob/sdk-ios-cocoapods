@@ -132,7 +132,7 @@
  @param timestamp 时间点, UTC时间, 以毫秒为单位
  @discussion
  1. 加载后的消息按照升序排列;
- 2. NSDate返回的timeInterval是以秒为单位的, 如果使用NSDate, 比如 timeIntervalSince1970 方法，需要将 timeInterval 乘以1000
+ 2. NSDate返回的timeInterval是以毫秒为单位的, 如果使用NSDate, 比如 timeIntervalSince1970 方法，需要将 timeInterval 乘以1000
  @result 加载的消息列表
  */
 - (NSArray *)loadNumbersOfMessages:(NSUInteger)aCount before:(long long)timestamp;
@@ -148,6 +148,19 @@
  @result 加载的消息列表
  */
 - (NSArray *)loadNumbersOfMessages:(NSUInteger)aCount withMessageId:(NSString *)messageId;
+
+/*!
+ @method
+ @brief 根据时间和类型加载指定条数的消息
+ @param aCount 要加载的消息条数
+ @param type   消息体类型
+ @param timestamp 时间点, UTC时间, 以毫秒为单位
+ @discussion
+ 1. 加载后的消息按照升序排列;
+ 2. NSDate返回的timeInterval是以毫秒为单位的, 如果使用NSDate, 比如 timeIntervalSince1970 方法，需要将 timeInterval 乘以1000
+ @result 加载的消息列表
+ */
+- (NSArray *)loadNumbersOfMessages:(NSUInteger)aCount bodyType:(MessageBodyType)type before:(long long)timestamp;
 
 /*!
  @method
