@@ -541,52 +541,6 @@
                                          EMError *error))completion
                        onQueue:(dispatch_queue_t)aQueue;
 
-#pragma mark - accept invitation
-
-/*!
- @method
- @brief 接受并加入群组
- @param groupId 所接受的群组ID
- @param pError  错误信息
- @result 返回所加入的群组对象
- */
-- (EMGroup *)acceptInvitationFromGroup:(NSString *)groupId
-                                 error:(EMError **)pError;
-
-/*!
- @method
- @brief 异步方法, 接受并加入群组
- @param groupId 所接受的群组ID
- @discussion
-        函数执行后, didAcceptInvitationFromGroup:error:回调会被触发
- */
-- (void)asyncAcceptInvitationFromGroup:(NSString *)groupId;
-
-/*!
- @method
- @brief 异步方法, 接受并加入群组
- @param groupId    所接受的群组ID
- @param completion 消息完成后的回调
- @param aQueue     回调执行时的线程
- */
-- (void)asyncAcceptInvitationFromGroup:(NSString *)groupId
-                            completion:(void (^)(EMGroup *group,
-                                                 EMError *error))completion
-                               onQueue:(dispatch_queue_t)aQueue;
-
-#pragma mark - reject invitation
-
-/*!
- @method
- @brief 拒绝一个加入群组的邀请
- @param groupId  被拒绝的群组ID
- @param username 被拒绝的人
- @param reason   拒绝理由
- */
-- (void)rejectInvitationForGroup:(NSString *)groupId
-                       toInviter:(NSString *)username
-                          reason:(NSString *)reason;
-
 
 #pragma mark - accept join group apply
 
@@ -1260,5 +1214,50 @@
                                                            EMError *error))completion
                                          onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_0, 2_0_2, "Use -asyncMyGroupsListWithCompletion:onQueue:");
 
+#pragma mark - accept invitation, will be abolished
+
+/*!
+ @method
+ @brief 接受并加入群组
+ @param groupId 所接受的群组ID
+ @param pError  错误信息
+ @result 返回所加入的群组对象
+ */
+- (EMGroup *)acceptInvitationFromGroup:(NSString *)groupId
+                                 error:(EMError **)pError EM_DEPRECATED_IOS(2_0_3, 2_1_8, "Delete");
+
+/*!
+ @method
+ @brief 异步方法, 接受并加入群组
+ @param groupId 所接受的群组ID
+ @discussion
+        函数执行后, didAcceptInvitationFromGroup:error:回调会被触发
+ */
+- (void)asyncAcceptInvitationFromGroup:(NSString *)groupId EM_DEPRECATED_IOS(2_0_3, 2_1_8, "Delete");
+
+/*!
+ @method
+ @brief 异步方法, 接受并加入群组
+ @param groupId    所接受的群组ID
+ @param completion 消息完成后的回调
+ @param aQueue     回调执行时的线程
+ */
+- (void)asyncAcceptInvitationFromGroup:(NSString *)groupId
+                            completion:(void (^)(EMGroup *group,
+                                                 EMError *error))completion
+                               onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_3, 2_1_8, "Delete");
+
+#pragma mark - reject invitation, will be abolished
+
+/*!
+ @method
+ @brief 拒绝一个加入群组的邀请
+ @param groupId  被拒绝的群组ID
+ @param username 被拒绝的人
+ @param reason   拒绝理由
+ */
+- (void)rejectInvitationForGroup:(NSString *)groupId
+                       toInviter:(NSString *)username
+                          reason:(NSString *)reason EM_DEPRECATED_IOS(2_0_3, 2_1_8, "Delete");
 
 @end
