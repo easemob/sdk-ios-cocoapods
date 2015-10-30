@@ -42,7 +42,7 @@
  @property
  @brief 命令参数
  */
-@property (nonatomic, strong, readonly) NSArray *params;
+@property (nonatomic, strong, readonly) NSArray *params EM_DEPRECATED_IOS(2_0_0, 2_0_9, @"不推荐使用, 请使用 EMMessage 的 ext 属性来携带额外的参数");
 
 /*!
  @property
