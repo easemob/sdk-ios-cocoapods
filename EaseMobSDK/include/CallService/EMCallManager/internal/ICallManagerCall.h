@@ -59,6 +59,12 @@
 
 /*!
  @method
+ @brief  设置实时视频的码率，必须在通话进行前设置
+ */
+- (void)setBitrate:(int)bitrate;
+
+/*!
+ @method
  @brief  进行实时语音
  @param chatter  要进行语音通话的username（不能与自己通话）
  @param timeout  超时时间（传0，使用SDK默认超时时间）
@@ -137,6 +143,13 @@
  @brief  获取本地实时视频的比特率kbps，实时变化
  */
 - (int)getVideoLocalBitrate;
+
+
+/*!
+ @method
+ @brief  获取实时视频快照
+ */
+- (void)takeRemotePicture:(NSString *)fullPath;
 
 @optional
 
