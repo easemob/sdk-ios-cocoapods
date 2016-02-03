@@ -17,6 +17,7 @@
 #define kSDKConfigKeyAutoLogin @"AutoLogin"
 #define kSDKConfigKeyAutoAcceptGroupInvitation @"AutoAcceptGroupInvitation"
 #define kSDKConfigKeyAutoFetchBuddyList @"AutoFetchBuddyList"
+#define kSDKConfigKeyAutoLeaveChatroomWhenLogin @"AutoLeaveChatroomWhenLogin"
 
 
 #define EM_DEPRECATED_IOS(_easemobIntro, _easemobDep, ...) __attribute__((deprecated("")))

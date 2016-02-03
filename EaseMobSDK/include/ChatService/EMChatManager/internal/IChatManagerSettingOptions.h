@@ -131,6 +131,27 @@
  */
 - (void)disableAutoDeleteConversatonWhenLeaveGroup;
 
+/*!
+ @property
+ @brief 是否已经开启登陆后自动离开聊天室功能,默认是YES
+ @discussion
+ */
+@property (nonatomic) BOOL isAutoLeaveChatroomWhenLogin;
+
+/*!
+ @property
+ @brief 开启登录后自动离开聊天室功能
+ @discussion
+ */
+- (void)enableAutoLeaveChatroomWhenLogin;
+
+/*!
+ @property
+ @brief 关闭登录后自动离开聊天室功能
+ @discussion
+ */
+- (void)disableAutoLeaveChatroomWhenLogin;
+
 @optional
 
 #pragma mark - EM_DEPRECATED_IOS

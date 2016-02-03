@@ -14,7 +14,7 @@
 #import "EMChatManagerGroupDelegate.h"
 #import "EMChatManagerPushNotificationDelegate.h"
 #import "EMChatManagerChatroomDelegate.h"
-
+#import "EMChatManagerDebugDelegate.h"
 /*!
  @protocol
  @brief 本协议包括：收发消息, 登陆注销, 加密解密, 媒体操作的回调等其它操作
@@ -27,7 +27,8 @@
                                 EMChatManagerUtilDelegate,
                                 EMChatManagerGroupDelegate,
                                 EMChatManagerPushNotificationDelegate,
-                                EMChatManagerChatroomDelegate>
+                                EMChatManagerChatroomDelegate,
+                                EMChatManagerDebugDelegate>
 
 @optional
 

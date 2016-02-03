@@ -35,6 +35,7 @@
 //file
 "EMErrorAttachmentNotFound" = "The file is not found.";
 "EMErrorAttachmentUploadFailure" = "File upload failed.";
+"EMErrorAttachmentDownloadFailure" = "File download failed.";
 
 //url
 "EMErrorIllegalURI" = "Invalid url.";

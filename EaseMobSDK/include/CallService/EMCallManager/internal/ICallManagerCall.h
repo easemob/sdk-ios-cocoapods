@@ -76,6 +76,14 @@
                               timeout:(NSUInteger)timeout
                                 error:(EMError **)pError;
 
+/*!
+ @method
+ @brief  获取音频音量，实时变化
+ @param sessionId  要进行的实时通话的ID
+ @result           音量
+ */
+- (int)getAudioLevel:(NSString *)sessionId;
+
 #pragma makr - call video
 
 /*!
@@ -150,6 +158,42 @@
  @brief  获取实时视频快照
  */
 - (void)takeRemotePicture:(NSString *)fullPath;
+
+/*!
+ @method
+ @brief  暂停语音数据传输
+ */
+- (void)pauseVoiceTransfer;
+
+/*!
+ @method
+ @brief  恢复语音数据传输
+ */
+- (void)resumeVoiceTransfer;
+
+/*!
+ @method
+ @brief  暂停视频(图像)数据传输
+ */
+- (void)pauseVideoTransfer;
+
+/*!
+ @method
+ @brief  恢复视频(图像)数据传输
+ */
+- (void)resumeVideoTransfer;
+
+/*!
+ @method
+ @brief  开始录制视频
+ */
+- (BOOL)videoStartRecord:(NSString*)path;
+
+/*!
+ @method
+ @brief  停止录制视频
+ */
+- (NSString*)videoStopRecord;
 
 @optional
 

@@ -30,4 +30,24 @@
                     changeReason:(EMCallStatusChangedReason)reason
                            error:(EMError *)error;
 
+/*!
+ @method
+ @brief 实时通话网络状态发生变化时的回调(弱网检测)
+ @param callSession 实时通话的实例
+ @param reason   变化原因
+ @param error    错误信息
+ */
+- (void)callSessionNetWorkStatusChanged:(EMCallSession *)callSession
+                           changeReason:(EMCallStatusNetWorkChangedReason)reason
+                                  error:(EMError *)error;
+
+/*!
+ @method
+ @brief 实时通话时收到对方开启关闭音频传输,开启关闭视频数据的回调
+ @param callSession 实时通话的实例
+ @param type     类型
+ */
+- (void)callSessionDataStatusChanged:(EMCallSession *)callSession
+                              status:(EMCallDataChangeStatus)status;
+
 @end
