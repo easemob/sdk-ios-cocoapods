@@ -76,4 +76,30 @@ typedef NS_ENUM(NSInteger, EMCallConnectType) {
     eCallConnectTypeRelay,
 };
 
+/*!
+ @enum
+ @brief 实时通话弱网检测
+ @constant eCallReasonNetworkUnstable 网络不稳定
+ @constant eCallReasonNetworkNormal 网络稳定
+ */
+typedef NS_ENUM(NSInteger, EMCallStatusNetWorkChangedReason){
+    eCallReasonNetworkUnstable = 0,
+    eCallReasonNetworkNormal,
+};
+
+/*!
+ @enum
+ @brief 实时通话数据关闭开启状态
+ @constant eAudioMute 开启静音
+ @constant eAudioUnmute 关闭静音
+ @constant eVideoPause 关闭视频数据
+ @constant eVideoResume 开启视频数据
+ */
+typedef NS_ENUM(NSInteger, EMCallDataChangeStatus) {
+    eAudioMute = 0,
+    eAudioUnmute,
+    eVideoPause,
+    eVideoResume,
+};
+
 #endif

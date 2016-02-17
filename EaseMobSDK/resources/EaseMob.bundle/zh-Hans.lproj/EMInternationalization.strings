@@ -35,6 +35,7 @@
 //file
 "EMErrorAttachmentNotFound" = "没有找到该文件.";
 "EMErrorAttachmentUploadFailure" = "上传文件失败.";
+"EMErrorAttachmentDownloadFailure" = "文件下载失败";
 
 //url
 "EMErrorIllegalURI" = "无效的url.";

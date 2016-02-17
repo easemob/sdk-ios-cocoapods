@@ -79,4 +79,7 @@
 //cryptor
 #import "IEMChatCryptor.h"
 
+//collection
+#import "EMCursorResult.h"
+
 #endif
