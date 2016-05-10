@@ -12,6 +12,8 @@
 #define kSDKAppKey @"EASEMOB_APPKEY"
 #define kSDKApnsCertName @"EASEMOB_APNSCERTNAME"
 #define kSDKConfigEnableConsoleLogger @"EASEMOB_CONFIG_ENABLECONSOLELOGGER"
+#define kSDKConfigDNSAddress @"EASEMOB_CONFIG_DNSADDRESS"
+#define kSDKConfigDNSServerID @"EASEMOB_CONFIG_DNSSERVERID"
 
 //private server
 #define kSDKServerApi @"EASEMOB_API_ADDRESS"

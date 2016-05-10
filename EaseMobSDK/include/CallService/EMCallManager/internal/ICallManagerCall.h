@@ -195,6 +195,13 @@
  */
 - (NSString*)videoStopRecord;
 
+/*!
+ @method
+ @brief  是否开启动态码率,默认关闭
+ @param  aFlag  YES开启,NO关闭
+ */
+- (void)setVideoAdaptive:(BOOL)aFlag;
+
 @optional
 
 #pragma mark - EM_DEPRECATED_IOS
