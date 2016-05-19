@@ -43,6 +43,8 @@
 //message
 "EMErrorMessageInvalid_NULL" = "消息为空.";
 "EMErrorMessageContainSensitiveWords" = "消息中有敏感词汇.";
+"EMErrorMessageFailedInBlacklist" = "你在黑名单中";
+"EMErrorMessageFailedBeLimited" = "消息发送限流";
 
 //group
 "EMErrorGroupInvalidIDNULL" = "无效的群组ID.";

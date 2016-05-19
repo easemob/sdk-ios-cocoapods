@@ -42,6 +42,8 @@
 //message
 "EMErrorMessageInvalid_NULL" = "The message is empty.";
 "EMErrorMessageContainSensitiveWords" = "The message contains sensitive words.";
+"EMErrorMessageFailedInBlacklist" = "Failed due to in the blacklist";
+"EMErrorMessageFailedBeLimited" = "Falied be limited";
 
 //group
 "EMErrorGroupInvalidIDNULL" = "Invalid Group ID.";

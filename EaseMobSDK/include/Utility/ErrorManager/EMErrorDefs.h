@@ -88,6 +88,8 @@ typedef NS_ENUM(NSInteger, EMErrorType) {
     //message error
     EMErrorMessageInvalid_NULL,                 //无效的消息(为空)
     EMErrorMessageContainSensitiveWords,        //消息中包含敏感词
+    EMErrorMessageFailedBeLimited,              //发送消息限流(Ex. 消息发送频率超过了服务器的限制)
+    EMErrorMessageFailedInBlacklist,            //发送消息失败(Ex. 加入黑名单,关系为双向,消息发送失败)
     
     //group error
     EMErrorGroupInvalidID_NULL,                 //无效的群组ID(为空)
