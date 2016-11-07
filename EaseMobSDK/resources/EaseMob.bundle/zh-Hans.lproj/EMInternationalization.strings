@@ -31,6 +31,7 @@
 "EMErrorTooManyOperations_Incoming" = "有来电.";
 "EMErrorTooManyOperations_Backup" = "正在备份.";
 "EMErrorTooManyOperations_Restore" = "正在恢复备份.";
+"EMErrorServerDisabled" = "服务器连接受限";
 
 //file
 "EMErrorAttachmentNotFound" = "没有找到该文件.";

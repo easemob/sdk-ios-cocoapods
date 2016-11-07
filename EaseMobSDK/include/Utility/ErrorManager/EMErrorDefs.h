@@ -76,6 +76,7 @@ typedef NS_ENUM(NSInteger, EMErrorType) {
     EMErrorServerDuplicatedAccount,             //注册失败(Ex. 注册时, 如果用户存在, 会返回的error)
     EMErrorServerInsufficientPrivilege,         //所执行操作的权限不够(Ex. 非管理员删除群成员时, 会返回的error)
     EMErrorServerTooManyOperations,             //短时间内多次发起同一操作(Ex. 频繁刷新群组列表, 会返回的error)
+    EMErrorServerServingDisabled,               //服务受限制
     
     //file error
     EMErrorAttachmentNotFound,                  //未找着附件

@@ -12,6 +12,7 @@
 #import "EMChatroom.h"
 
 @class EMCursorResult;
+@class EMPageResult;
 
 @protocol IChatManagerChatroom <IChatManagerBase>
 
@@ -21,28 +22,28 @@
 
 /*!
  @method
- @brief 获取指定范围内的聊天室
- @param cursor   获取聊天室的cursor，首次调用传空即可
- @param pageSize 期望结果的数量, 如果 < 0 则一次返回所有结果
- @param pError   出错信息
- @return         获取的聊天室结果
+ @brief 获取指定页码指定条数的聊天室
+ @param aPage     要获取第几页，从1开始
+ @param aPageSize 最多获取多少条
+ @param pError    出错信息
+ @return          获取的聊天室结果
  @discussion
  这是一个阻塞方法，用户应当在一个独立线程中执行此方法，用户可以连续调用此方法以获得所有聊天室
  */
-- (EMCursorResult *)fetchChatroomsFromServerWithCursor:(NSString *)cursor
-                                              pageSize:(NSInteger)pageSize
-                                              andError:(EMError **)pError;
+- (EMPageResult *)fetchChatroomsFromServerWithPage:(NSInteger)aPage
+                                          pageSize:(NSInteger)aPageSize
+                                             error:(EMError **)pError;
 
 /*!
  @method
  @brief 异步方法, 获取指定范围的聊天室
- @param cursor      获取聊天室的cursor，首次调用传空即可
- @param pageSize    期望结果的数量, 如果 < 0 则一次返回所有结果
- @param completion  完成回调，回调会在主线程调用
+ @param aPage        要获取第几页，从1开始
+ @param aPageSize    最多获取多少条
+ @param completion   完成回调，回调会在主线程调用
  */
-- (void)asyncFetchChatroomsFromServerWithCursor:(NSString *)cursor
-                                       pageSize:(NSInteger)pageSize
-                                  andCompletion:(void (^)(EMCursorResult *result, EMError *error))completion;
+- (void)asyncFetchChatroomsFromServerWithPage:(NSInteger)aPage
+                                     pageSize:(NSInteger)aPageSize
+                                   completion:(void (^)(EMPageResult *result, EMError *error))completion;
 
 #pragma mark - fetch chatroom info
 
@@ -137,5 +138,32 @@
  */
 - (void)asyncLeaveChatroom:(NSString *)chatroomId
                 completion:(void (^)(EMChatroom *chatroom, EMError *error))completion;
+
+#pragma mark - EM_DEPRECATED_IOS
+
+/*!
+ @method
+ @brief 获取指定范围内的聊天室
+ @param cursor   获取聊天室的cursor，首次调用传空即可
+ @param pageSize 期望结果的数量, 如果 < 0 则一次返回所有结果
+ @param pError   出错信息
+ @return         获取的聊天室结果
+ @discussion
+ 这是一个阻塞方法，用户应当在一个独立线程中执行此方法，用户可以连续调用此方法以获得所有聊天室
+ */
+- (EMCursorResult *)fetchChatroomsFromServerWithCursor:(NSString *)cursor
+                                             pageSize:(NSInteger)pageSize
+                                             andError:(EMError **)pError EM_DEPRECATED_IOS(2_1_0, 2_2_7, "Use - fetchChatroomsFromServerWithPage:pageSize:error");
+
+/*!
+ @method
+ @brief 异步方法, 获取指定范围的聊天室
+ @param cursor      获取聊天室的cursor，首次调用传空即可
+ @param pageSize    期望结果的数量, 如果 < 0 则一次返回所有结果
+ @param completion  完成回调，回调会在主线程调用
+ */
+- (void)asyncFetchChatroomsFromServerWithCursor:(NSString *)cursor
+                                      pageSize:(NSInteger)pageSize
+                                 andCompletion:(void (^)(EMCursorResult *result, EMError *error))completion EM_DEPRECATED_IOS(2_1_0, 2_2_7, "Use - asyncFetchChatroomsFromServerWithPage:pageSize:completion");
 
 @end
