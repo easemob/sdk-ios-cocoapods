@@ -31,6 +31,7 @@
 "EMErrorTooManyOperations_Incoming" = "Incoming calls.";
 "EMErrorTooManyOperations_Backup" = "Backup is in progress.";
 "EMErrorTooManyOperations_Restore" = "Restore is in progress.";
+"EMErrorServerDisabled" = "Server Disabled";
 
 //file
 "EMErrorAttachmentNotFound" = "The file is not found.";

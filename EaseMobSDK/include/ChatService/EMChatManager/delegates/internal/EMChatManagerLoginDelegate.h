@@ -91,6 +91,14 @@
 
 /*!
  @method
+ @brief 服务被禁用
+ @discussion
+ @result
+ */
+- (void)didForbidByServer;
+
+/*!
+ @method
  @brief 当前登陆用户掉线重连后发生的通知回调
  @discussion
  @result
