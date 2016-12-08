@@ -762,33 +762,7 @@
                                                   EMError *error))completion
                                 onQueue:(dispatch_queue_t)aQueue;
 
-#pragma mark - fetch all public groups
-
-/*!
- @method
- @brief 获取所有公开群组
- @param pError 错误信息
- @return 获取的所有群组列表
- */
-- (NSArray *)fetchAllPublicGroupsWithError:(EMError **)pError;
-
-/*!
- @method
- @brief 异步方法, 获取所有公开群组
- @discussion
-        执行后, 回调didFetchAllPublicGroups:error:会被触发
- */
-- (void)asyncFetchAllPublicGroups;
-
-/*!
- @method
- @brief 异步方法, 获取所有公开群组
- @param completion 消息完成后的回调
- @param aQueue     回调block时的线程
- */
-- (void)asyncFetchAllPublicGroupsWithCompletion:(void (^)(NSArray *groups,
-                                                          EMError *error))completion
-                                        onQueue:(dispatch_queue_t)aQueue;
+#pragma mark - fetch public groups
 
 /*!
  @method
@@ -980,6 +954,34 @@
 @optional
 
 #pragma mark - EM_DEPRECATED_IOS
+
+#pragma mark - fetch all public groups
+
+/*!
+ @method
+ @brief 获取所有公开群组
+ @param pError 错误信息
+ @return 获取的所有群组列表
+ */
+- (NSArray *)fetchAllPublicGroupsWithError:(EMError **)pError; EM_DEPRECATED_IOS(2_0_1, 2_2_8, "Delete");
+
+/*!
+ @method
+ @brief 异步方法, 获取所有公开群组
+ @discussion
+ 执行后, 回调didFetchAllPublicGroups:error:会被触发
+ */
+- (void)asyncFetchAllPublicGroups; EM_DEPRECATED_IOS(2_0_1, 2_2_8, "Delete");
+
+/*!
+ @method
+ @brief 异步方法, 获取所有公开群组
+ @param completion 消息完成后的回调
+ @param aQueue     回调block时的线程
+ */
+- (void)asyncFetchAllPublicGroupsWithCompletion:(void (^)(NSArray *groups,
+                                                          EMError *error))completion
+                                        onQueue:(dispatch_queue_t)aQueue; EM_DEPRECATED_IOS(2_0_1, 2_2_8, "Delete");
 
 /*!
  @method
