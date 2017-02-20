@@ -90,6 +90,23 @@
 //建议只在 Debug 状态时，打开该开关
 - (void)enableUncaughtExceptionHandler;
 
+/*!
+ @method
+ @brief         同步方法，将日志文件压缩成.zip文件，返回zip文件路径。强烈建议方法完成之后删除该压缩文件
+ @discussion    失败返回nil,成功返回文件路径
+ @param pError  错误信息
+ @result        文件路径
+ */
+- (NSString *)getLogFilesPath:(EMError **)pError;
+
+/*!
+ @method
+ @brief         将日志文件压缩成.zip文件，返回zip文件路径。强烈建议方法完成之后删除该压缩文件
+ @discussion    失败返回nil,成功返回文件路径
+ @param aCompletionBlock    完成的回调
+ */
+- (void)getLogFilesPathWithCompletion:(void (^)(NSString *aPath, EMError *aError))aCompletionBlock;
+
 @end
 
 #import "EaseMob+CallService.h"

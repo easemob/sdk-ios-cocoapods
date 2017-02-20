@@ -71,7 +71,7 @@
 
 /*!
  @property
- @brief 是否使用https，默认为YES, 该接口的设置不会进行存储，需要开发者每次启动sdk之前都要设置一下
+ @brief 是否只使用https，默认为NO, 该接口的设置不会进行存储，需要开发者每次启动sdk之前都要设置一下
  @discussion
  */
 @property (nonatomic) BOOL isUseHttpsOnly;

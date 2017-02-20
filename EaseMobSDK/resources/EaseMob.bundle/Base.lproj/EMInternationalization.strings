@@ -10,6 +10,7 @@
 "EMErrorNotFound" = "Not found.";
 "EMErrorNotFound_User" = "User do not exist.";
 "EMErrorServerMaxCountExceeded" = "Reached the maximum number.";
+"EMErrorLogNotFound" = "Log file not found.";
 
 //configuration
 "EMErrorConfigInvalidAppKey" = "Invalid appkey.";
@@ -41,6 +42,7 @@
 
 //message
 "EMErrorMessageInvalid_NULL" = "The message is empty.";
+"EMErrorMessageInvalid_ToIsNULL" = "The Receiver is empty.";
 "EMErrorMessageContainSensitiveWords" = "The message contains sensitive words.";
 "EMErrorMessageFailedInBlacklist" = "Failed due to in the blacklist";
 "EMErrorMessageFailedBeLimited" = "Falied be limited";
