@@ -62,34 +62,36 @@
  */
 @property (nonatomic) NSUInteger noDisturbingEndM;
 
+#pragma mark - EM_DEPRECATED_IOS 2.3.1
+
 /*!
  @property
  @brief  备份消息的类型（iOS or Android）
  */
-@property (strong, nonatomic) NSString *backupType;
+@property (strong, nonatomic) NSString *backupType EM_DEPRECATED_IOS(2_0_0, 2_3_1);
 
 /*!
  @property
  @brief  备份消息的版本
  */
-@property (strong, nonatomic) NSString *backupVersion;
+@property (strong, nonatomic) NSString *backupVersion EM_DEPRECATED_IOS(2_0_0, 2_3_1);
 
 /*!
  @property
  @brief  备份消息的大小 bytes
  */
-@property (nonatomic) NSUInteger backupDataSize;
+@property (nonatomic) NSUInteger backupDataSize EM_DEPRECATED_IOS(2_0_0, 2_3_1);
 
 /*!
  @property
  @brief  备份消息的时间戳
  */
-@property (nonatomic) NSTimeInterval backupTimeInterval;
+@property (nonatomic) NSTimeInterval backupTimeInterval EM_DEPRECATED_IOS(2_0_0, 2_3_1);
 
 /*!
  @property
  @brief  备份消息的下载地址,以“,”组合成字符串
  */
-@property (strong, nonatomic) NSString *backupPaths;
+@property (strong, nonatomic) NSString *backupPaths EM_DEPRECATED_IOS(2_0_0, 2_3_1);
 
 @end
