@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BUDDY_REQUEST_UNRECEIVED</key>
+	<string>收到了好友请求，但是没有可以接受的类，请确保可以接收回调的类已经初始化。</string>
+</dict>
+</plist>

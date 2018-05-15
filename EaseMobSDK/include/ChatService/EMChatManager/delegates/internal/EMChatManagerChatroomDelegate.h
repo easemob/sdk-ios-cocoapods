@@ -16,7 +16,7 @@
  */
 typedef NS_ENUM(NSInteger, EMChatroomBeKickedReason) {
     eChatroomBeKickedReason_BeRemoved = 1,
-    eChatroomBeKickedReason_Destroyed
+    eChatroomBeKickedReason_Destroyed,
 };
 
 @class EMChatroom;
